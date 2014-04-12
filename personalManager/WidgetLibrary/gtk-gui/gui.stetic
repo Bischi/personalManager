@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stetic-interface>
+  <configuration>
+    <images-root-path>..</images-root-path>
+    <target-gtk-version>2.12</target-gtk-version>
+  </configuration>
+  <import>
+    <widget-library name="../bin/Debug/WidgetLibrary.dll" internal="true" />
+  </import>
+  <widget class="Gtk.Bin" id="WidgetLibrary.SelectWidget" design-size="665 224">
+    <property name="MemberName" />
+    <property name="Visible">False</property>
+    <child>
+      <widget class="Gtk.HButtonBox" id="hbuttonbox3">
+        <property name="MemberName" />
+        <property name="Homogeneous">True</property>
+        <property name="Size">3</property>
+        <property name="LayoutStyle">Spread</property>
+        <child>
+          <widget class="Gtk.Button" id="planButton">
+            <property name="MemberName" />
+            <property name="WidthRequest">200</property>
+            <property name="HeightRequest">200</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">Custom</property>
+            <signal name="Clicked" handler="onplanButtonClicked" />
+            <child>
+              <widget class="Gtk.VBox" id="vbox6">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Image" id="image14">
+                    <property name="MemberName" />
+                    <property name="Pixbuf">resource:WidgetLibrary.calender.png</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="label9">
+                    <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes">Pläne</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="personButton">
+            <property name="MemberName" />
+            <property name="CanFocus">True</property>
+            <property name="Type">Custom</property>
+            <child>
+              <widget class="Gtk.VBox" id="vbox5">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Image" id="image15">
+                    <property name="MemberName" />
+                    <property name="Pixbuf">resource:WidgetLibrary.worker_small.png</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="personsButtonLabel">
+                    <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes">Personen</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">1</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+        <child>
+          <widget class="Gtk.Button" id="timesButton">
+            <property name="MemberName" />
+            <property name="WidthRequest">200</property>
+            <property name="HeightRequest">200</property>
+            <property name="CanFocus">True</property>
+            <property name="Type">Custom</property>
+            <child>
+              <widget class="Gtk.VBox" id="vbox3">
+                <property name="MemberName" />
+                <property name="Spacing">6</property>
+                <child>
+                  <widget class="Gtk.Image" id="image12">
+                    <property name="MemberName" />
+                    <property name="Pixbuf">resource:WidgetLibrary.Clock_small.png</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">0</property>
+                    <property name="AutoSize">False</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="Gtk.Label" id="timesButtonLabel">
+                    <property name="MemberName" />
+                    <property name="LabelProp" translatable="yes">Schichten</property>
+                  </widget>
+                  <packing>
+                    <property name="Position">1</property>
+                    <property name="AutoSize">False</property>
+                    <property name="Fill">False</property>
+                  </packing>
+                </child>
+              </widget>
+            </child>
+          </widget>
+          <packing>
+            <property name="Position">2</property>
+            <property name="Expand">False</property>
+            <property name="Fill">False</property>
+          </packing>
+        </child>
+      </widget>
+    </child>
+  </widget>
+</stetic-interface>

@@ -1,5 +1,6 @@
 using System;
 using Gtk;
+using WidgetLibrary;
 
 public partial class MainWindow: Gtk.Window
 {	
@@ -13,4 +14,5 @@ public partial class MainWindow: Gtk.Window
 		Application.Quit ();
 		a.RetVal = true;
 	}
+
 }

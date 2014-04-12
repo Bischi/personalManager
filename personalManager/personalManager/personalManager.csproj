@@ -58,4 +58,10 @@
       <DeployService-TargetDirectoryId>Linux.DesktopApplications</DeployService-TargetDirectoryId>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WidgetLibrary\WidgetLibrary.csproj">
+      <Project>{0B4CD9D4-DFEF-4B3E-88D8-A77224AE2662}</Project>
+      <Name>WidgetLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
