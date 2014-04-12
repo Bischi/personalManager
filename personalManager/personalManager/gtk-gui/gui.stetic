@@ -24,7 +24,7 @@
       </source>
     </icon-set>
   </icon-factory>
-  <widget class="Gtk.Window" id="MainWindow" design-size="769 601">
+  <widget class="Gtk.Window" id="MainWindow" design-size="653 377">
     <action-group name="Default">
       <action id="PlneAction">
         <property name="Type">Action</property>
@@ -69,13 +69,19 @@
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Öffnen</property>
         <property name="ShortLabel" translatable="yes">Öffnen</property>
-        <property name="StockId">Time</property>
+        <property name="StockId">Times</property>
+      </action>
+      <action id="homeTBButton">
+        <property name="Type">Action</property>
+        <property name="Label" translatable="yes" />
+        <property name="StockId">gtk-home</property>
+        <signal name="Activated" handler="OnHomeTBButtonActivated" />
       </action>
     </action-group>
     <property name="MemberName" />
+    <property name="ExtensionEvents">All</property>
     <property name="Title" translatable="yes">Home</property>
     <property name="WindowPosition">Center</property>
-    <property name="AllowGrow">False</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.VBox" id="vbox1">
@@ -109,6 +115,8 @@
             <property name="MemberName" />
             <property name="ShowArrow">False</property>
             <node name="__gtksharp_123_Stetic_Editor_ActionToolbar" type="Toolbar">
+              <node type="Toolitem" action="homeTBButton" />
+              <node type="Separator" />
               <node type="Toolitem" action="openAction" />
               <node type="Separator" />
               <node type="Toolitem" action="addAction" />
@@ -125,7 +133,7 @@
           </packing>
         </child>
         <child>
-          <widget class="WidgetLibrary.SelectWidget" id="selectwidget1">
+          <widget class="WidgetLibrary.SelectWidget" id="selectwidget">
             <property name="MemberName" />
             <property name="Events">ButtonPressMask</property>
           </widget>
@@ -198,7 +206,7 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Label" id="label3">
+              <widget class="Gtk.Label" id="musicFestivalLabel">
                 <property name="MemberName" />
                 <property name="Xalign">1</property>
                 <property name="LabelProp" translatable="yes">Bezirksmusikfest</property>
@@ -217,7 +225,7 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Label" id="label4">
+              <widget class="Gtk.Label" id="musicNameLabel">
                 <property name="MemberName" />
                 <property name="Xalign">1</property>
                 <property name="LabelProp" translatable="yes">MV - Thüringerberg</property>

@@ -44,6 +44,8 @@
     <Compile Include="gtk-gui\generated.cs" />
     <Compile Include="SelectWidget.cs" />
     <Compile Include="gtk-gui\WidgetLibrary.SelectWidget.cs" />
+    <Compile Include="PersonWidget.cs" />
+    <Compile Include="gtk-gui\WidgetLibrary.PersonWidget.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

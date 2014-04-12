@@ -12,16 +12,17 @@ public partial class MainWindow
 	private global::Gtk.Action fileAction;
 	private global::Gtk.Action openAction;
 	private global::Gtk.Action ffnenAction;
+	private global::Gtk.Action homeTBButton;
 	private global::Gtk.VBox vbox1;
 	private global::Gtk.MenuBar menubar1;
 	private global::Gtk.Toolbar toolbar1;
-	private global::WidgetLibrary.SelectWidget selectwidget1;
+	private global::WidgetLibrary.SelectWidget selectwidget;
 	private global::Gtk.Table table1;
 	private global::Gtk.Label dateLabel;
 	private global::Gtk.Fixed fixed1;
 	private global::Gtk.Fixed fixed2;
-	private global::Gtk.Label label3;
-	private global::Gtk.Label label4;
+	private global::Gtk.Label musicFestivalLabel;
+	private global::Gtk.Label musicNameLabel;
 	private global::Gtk.Label timeLabel;
 	
 	protected virtual void Build ()
@@ -51,15 +52,17 @@ public partial class MainWindow
 		this.openAction = new global::Gtk.Action ("openAction", global::Mono.Unix.Catalog.GetString ("Öffnen"), null, "gtk-open");
 		this.openAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Öffnen");
 		w1.Add (this.openAction, null);
-		this.ffnenAction = new global::Gtk.Action ("ffnenAction", global::Mono.Unix.Catalog.GetString ("Öffnen"), null, "Time");
+		this.ffnenAction = new global::Gtk.Action ("ffnenAction", global::Mono.Unix.Catalog.GetString ("Öffnen"), null, "Times");
 		this.ffnenAction.ShortLabel = global::Mono.Unix.Catalog.GetString ("Öffnen");
 		w1.Add (this.ffnenAction, null);
+		this.homeTBButton = new global::Gtk.Action ("homeTBButton", null, null, "gtk-home");
+		w1.Add (this.homeTBButton, null);
 		this.UIManager.InsertActionGroup (w1, 0);
 		this.AddAccelGroup (this.UIManager.AccelGroup);
+		this.ExtensionEvents = ((global::Gdk.ExtensionMode)(1));
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("Home");
 		this.WindowPosition = ((global::Gtk.WindowPosition)(1));
-		this.AllowGrow = false;
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.vbox1 = new global::Gtk.VBox ();
 		this.vbox1.Name = "vbox1";
@@ -74,7 +77,7 @@ public partial class MainWindow
 		w2.Expand = false;
 		w2.Fill = false;
 		// Container child vbox1.Gtk.Box+BoxChild
-		this.UIManager.AddUiFromString ("<ui><toolbar name='toolbar1'><toolitem name='openAction' action='openAction'/><separator/><toolitem name='addAction' action='addAction'/><toolitem name='orientationPortraitAction' action='orientationPortraitAction'/><separator/><toolitem name='ffnenAction' action='ffnenAction'/></toolbar></ui>");
+		this.UIManager.AddUiFromString ("<ui><toolbar name='toolbar1'><toolitem name='homeTBButton' action='homeTBButton'/><separator/><toolitem name='openAction' action='openAction'/><separator/><toolitem name='addAction' action='addAction'/><toolitem name='orientationPortraitAction' action='orientationPortraitAction'/><separator/><toolitem name='ffnenAction' action='ffnenAction'/></toolbar></ui>");
 		this.toolbar1 = ((global::Gtk.Toolbar)(this.UIManager.GetWidget ("/toolbar1")));
 		this.toolbar1.Name = "toolbar1";
 		this.toolbar1.ShowArrow = false;
@@ -84,11 +87,11 @@ public partial class MainWindow
 		w3.Expand = false;
 		w3.Fill = false;
 		// Container child vbox1.Gtk.Box+BoxChild
-		this.selectwidget1 = new global::WidgetLibrary.SelectWidget ();
-		this.selectwidget1.Events = ((global::Gdk.EventMask)(256));
-		this.selectwidget1.Name = "selectwidget1";
-		this.vbox1.Add (this.selectwidget1);
-		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.selectwidget1]));
+		this.selectwidget = new global::WidgetLibrary.SelectWidget ();
+		this.selectwidget.Events = ((global::Gdk.EventMask)(256));
+		this.selectwidget.Name = "selectwidget";
+		this.vbox1.Add (this.selectwidget);
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.selectwidget]));
 		w4.Position = 2;
 		// Container child vbox1.Gtk.Box+BoxChild
 		this.table1 = new global::Gtk.Table (((uint)(2)), ((uint)(3)), false);
@@ -125,22 +128,22 @@ public partial class MainWindow
 		w7.RightAttach = ((uint)(2));
 		w7.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table1.Gtk.Table+TableChild
-		this.label3 = new global::Gtk.Label ();
-		this.label3.Name = "label3";
-		this.label3.Xalign = 1F;
-		this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("Bezirksmusikfest");
-		this.table1.Add (this.label3);
-		global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table1 [this.label3]));
+		this.musicFestivalLabel = new global::Gtk.Label ();
+		this.musicFestivalLabel.Name = "musicFestivalLabel";
+		this.musicFestivalLabel.Xalign = 1F;
+		this.musicFestivalLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("Bezirksmusikfest");
+		this.table1.Add (this.musicFestivalLabel);
+		global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table1 [this.musicFestivalLabel]));
 		w8.LeftAttach = ((uint)(2));
 		w8.RightAttach = ((uint)(3));
 		w8.YOptions = ((global::Gtk.AttachOptions)(4));
 		// Container child table1.Gtk.Table+TableChild
-		this.label4 = new global::Gtk.Label ();
-		this.label4.Name = "label4";
-		this.label4.Xalign = 1F;
-		this.label4.LabelProp = global::Mono.Unix.Catalog.GetString ("MV - Thüringerberg");
-		this.table1.Add (this.label4);
-		global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.table1 [this.label4]));
+		this.musicNameLabel = new global::Gtk.Label ();
+		this.musicNameLabel.Name = "musicNameLabel";
+		this.musicNameLabel.Xalign = 1F;
+		this.musicNameLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("MV - Thüringerberg");
+		this.table1.Add (this.musicNameLabel);
+		global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.table1 [this.musicNameLabel]));
 		w9.TopAttach = ((uint)(1));
 		w9.BottomAttach = ((uint)(2));
 		w9.LeftAttach = ((uint)(2));
@@ -165,9 +168,10 @@ public partial class MainWindow
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
-		this.DefaultWidth = 769;
-		this.DefaultHeight = 601;
+		this.DefaultWidth = 653;
+		this.DefaultHeight = 377;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
+		this.homeTBButton.Activated += new global::System.EventHandler (this.OnHomeTBButtonActivated);
 	}
 }
