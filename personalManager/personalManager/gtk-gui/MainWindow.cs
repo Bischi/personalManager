@@ -62,7 +62,7 @@ public partial class MainWindow
 		this.ExtensionEvents = ((global::Gdk.ExtensionMode)(1));
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("Home");
-		this.WindowPosition = ((global::Gtk.WindowPosition)(1));
+		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.vbox1 = new global::Gtk.VBox ();
 		this.vbox1.Name = "vbox1";
@@ -102,6 +102,7 @@ public partial class MainWindow
 		// Container child table1.Gtk.Table+TableChild
 		this.dateLabel = new global::Gtk.Label ();
 		this.dateLabel.Name = "dateLabel";
+		this.dateLabel.Xalign = 0F;
 		this.dateLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("DATUM");
 		this.table1.Add (this.dateLabel);
 		global::Gtk.Table.TableChild w5 = ((global::Gtk.Table.TableChild)(this.table1 [this.dateLabel]));
@@ -152,6 +153,7 @@ public partial class MainWindow
 		// Container child table1.Gtk.Table+TableChild
 		this.timeLabel = new global::Gtk.Label ();
 		this.timeLabel.Name = "timeLabel";
+		this.timeLabel.Xalign = 0F;
 		this.timeLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("Uhrzeit");
 		this.table1.Add (this.timeLabel);
 		global::Gtk.Table.TableChild w10 = ((global::Gtk.Table.TableChild)(this.table1 [this.timeLabel]));

@@ -1,4 +1,8 @@
 using System;
+using Gtk;
+using Gdk;
+using System.Collections.Generic;
+
 
 namespace WidgetLibrary
 {
@@ -9,8 +13,16 @@ namespace WidgetLibrary
 		{
 			this.Build ();
 
+			#region Labelstyle
+			//projectTitelLabel.Pattern = "________________________________________________________________________________"; //Unterstreichung - Projekttitel
+			Gdk.Color bluecolor = new Gdk.Color (255, 100, 50);
+			//dateLabel.ModifyFg (Gtk.StateType.Normal, bluecolor);
+			PHeaderLabel.ModifyFont (Pango.FontDescription.FromString ("Calibri, Bold 11"));
+			PVHeaderLabel.ModifyFont (Pango.FontDescription.FromString ("Calibri, Bold 11"));
+			#endregion
 
-			#region TreeView füllen
+
+	  		#region TreeView füllen
 			// Create a column for the date name
 			Gtk.TreeViewColumn fnameColumn = new Gtk.TreeViewColumn ();
 			fnameColumn.Title = "Vorname";
@@ -106,8 +118,18 @@ namespace WidgetLibrary
 			personalTreeView.Model = stempsListStore;
 			
 			
-#endregion
+			#endregion
 
+			#region areaComboBox - Fill areas
+
+			List<String> areaList = SelectWidget.connection.readAreas();
+			ListStore ls = new ListStore(typeof(string));
+			areaCombobox.Model = ls;
+			
+			foreach(string s in areaList)
+				ls.AppendValues(s);
+
+			#endregion
 
 		}
 	}

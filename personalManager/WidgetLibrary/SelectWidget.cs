@@ -1,4 +1,5 @@
 using System;
+using Gtk;
 
 namespace WidgetLibrary
 {
@@ -6,10 +7,12 @@ namespace WidgetLibrary
 	public partial class SelectWidget : Gtk.Bin
 	{
 		PersonWidget pw;
+		public static DBConnector connection;
 		
 		public SelectWidget ()
 		{
 			this.Build ();
+			connection = new SQLiteConnection();
 
 			pw = new PersonWidget();
 		}

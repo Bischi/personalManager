@@ -8,6 +8,8 @@ public partial class MainWindow: Gtk.Window
 	{
 		Build ();
 
+		this.SetPosition(Gtk.WindowPosition.CenterAlways);
+
 		#region Labelstyle
 		//projectTitelLabel.Pattern = "________________________________________________________________________________"; //Unterstreichung - Projekttitel
 		Gdk.Color bluecolor = new Gdk.Color (255, 100, 50);
@@ -18,17 +20,28 @@ public partial class MainWindow: Gtk.Window
 		musicNameLabel.ModifyFont (Pango.FontDescription.FromString ("Calibri, Bold 12"));
 		#endregion
 
+		#region Datumanzeige / Uhrzeitanzeige
+
+		DateTime now = DateTime.Now; 
+		string currentDate = now.ToShortDateString ();
+		string currentTime = now.ToShortTimeString ();
+
+		dateLabel.Text = currentDate;
+		timeLabel.Text = currentTime;
+
+		#endregion
 	}
 	
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{
 		Application.Quit ();
 		a.RetVal = true;
-	}
+	} // Click on X - Button on topright
 
 	protected void OnHomeTBButtonActivated (object sender, EventArgs e)
 	{
 		selectwidget.onHomeButtonClicked();
+		this.SetPosition(Gtk.WindowPosition.CenterAlways);
 		this.ReshowWithInitialSize();
-	}
+	} //Home-Button pressed
 }

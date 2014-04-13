@@ -37,6 +37,11 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="art-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="pango-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite" />
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MyClass.cs" />
@@ -46,6 +51,8 @@
     <Compile Include="gtk-gui\WidgetLibrary.SelectWidget.cs" />
     <Compile Include="PersonWidget.cs" />
     <Compile Include="gtk-gui\WidgetLibrary.PersonWidget.cs" />
+    <Compile Include="SQLiteConnection.cs" />
+    <Compile Include="DBConnector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
