@@ -82,7 +82,7 @@ namespace WidgetLibrary
 				
 				datareader = sqlite_cmd.ExecuteReader ();
 				
-				string readname = ""; // ausgelesene ID von Typ von Company
+				string readname = ""; 
 				List<string> areas = new List<string>(); // To Save Areas and return them
 
 				while (datareader.Read())
@@ -92,6 +92,36 @@ namespace WidgetLibrary
 				}
 				sqlite_conn.Close ();
 				return areas; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return null; 
+			}
+		}
+
+		public override List<string> readTyp ()
+		{
+			try {
+				
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				
+				sqlite_cmd.CommandText = "SELECT name FROM tbl_typ";
+
+				sqlite_conn.Open ();
+				
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				string readname = "";
+				List<string> typs = new List<string>(); // To Save typs and return them
+				
+				while (datareader.Read())
+				{
+					readname = datareader.GetString(0);
+					typs.Add (readname);
+				}
+				sqlite_conn.Close ();
+				return typs; 
 			}  
 			catch (Exception ex) 
 			{

@@ -7,9 +7,7 @@ public partial class MainWindow: Gtk.Window
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
-
-		this.SetPosition(Gtk.WindowPosition.CenterAlways);
-
+		this.SetPosition(Gtk.WindowPosition.Center);
 		#region Labelstyle
 		//projectTitelLabel.Pattern = "________________________________________________________________________________"; //Unterstreichung - Projekttitel
 		Gdk.Color bluecolor = new Gdk.Color (255, 100, 50);
@@ -44,4 +42,11 @@ public partial class MainWindow: Gtk.Window
 		this.SetPosition(Gtk.WindowPosition.CenterAlways);
 		this.ReshowWithInitialSize();
 	} //Home-Button pressed
+
+
+
+
+
+
+
 }

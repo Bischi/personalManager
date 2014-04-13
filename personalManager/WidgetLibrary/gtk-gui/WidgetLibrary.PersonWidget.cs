@@ -19,7 +19,7 @@ namespace WidgetLibrary
 		private global::Gtk.Entry lnameEntry;
 		private global::Gtk.ComboBox taskCombobox;
 		private global::Gtk.ComboBox timesCombobox;
-		private global::Gtk.Entry typEntry;
+		private global::Gtk.ComboBox typCombobox;
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
 		private global::Gtk.TreeView personalTreeView;
 		private global::Gtk.HSeparator hseparator2;
@@ -194,13 +194,10 @@ namespace WidgetLibrary
 			w13.RightAttach = ((uint)(5));
 			w13.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
-			this.typEntry = new global::Gtk.Entry ();
-			this.typEntry.CanFocus = true;
-			this.typEntry.Name = "typEntry";
-			this.typEntry.IsEditable = true;
-			this.typEntry.InvisibleChar = '●';
-			this.table1.Add (this.typEntry);
-			global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.table1 [this.typEntry]));
+			this.typCombobox = global::Gtk.ComboBox.NewText ();
+			this.typCombobox.Name = "typCombobox";
+			this.table1.Add (this.typCombobox);
+			global::Gtk.Table.TableChild w14 = ((global::Gtk.Table.TableChild)(this.table1 [this.typCombobox]));
 			w14.TopAttach = ((uint)(2));
 			w14.BottomAttach = ((uint)(3));
 			w14.LeftAttach = ((uint)(1));
@@ -436,6 +433,10 @@ namespace WidgetLibrary
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
+			this.fnameEntry.Changed += new global::System.EventHandler (this.OnFnameEntryChanged);
+			this.areaCombobox.Changed += new global::System.EventHandler (this.OnAreaComboboxChanged);
+			this.personalTreeView.CursorChanged += new global::System.EventHandler (this.OnPersonalTreeViewCursorChanged);
+			this.PersonAddButton.Clicked += new global::System.EventHandler (this.OnPersonAddButtonClicked);
 		}
 	}
 }

@@ -9,6 +9,28 @@ namespace WidgetLibrary
 	[System.ComponentModel.ToolboxItem(true)]
 	public partial class PersonWidget : Gtk.Bin
 	{
+
+		#region Stringdefinitionen
+
+		string fname = "";
+		string lname = "";
+		string area = "";
+		string task = "";
+		string times = "";
+		string starttime = "";
+		string endtime = "";
+		string email = "";
+		string mobile = "";
+		string tele = "";
+
+		#endregion
+
+
+		Gtk.TreeModelFilter filter;
+
+		Gtk.ListStore stempsListStore = new Gtk.ListStore (typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string));
+
+
 		public PersonWidget ()
 		{
 			this.Build ();
@@ -22,7 +44,7 @@ namespace WidgetLibrary
 			#endregion
 
 
-	  		#region TreeView füllen
+		    		#region TreeView füllen
 			// Create a column for the date name
 			Gtk.TreeViewColumn fnameColumn = new Gtk.TreeViewColumn ();
 			fnameColumn.Title = "Vorname";
@@ -42,6 +64,12 @@ namespace WidgetLibrary
 			areaColumn.Title = "Abteilung";
 			Gtk.CellRendererText areaTitleCell = new Gtk.CellRendererText ();
 			areaColumn.PackStart (areaTitleCell, true); 
+
+			// Create a column for the description 
+			Gtk.TreeViewColumn taskColumn = new Gtk.TreeViewColumn ();
+			taskColumn.Title = "Aufgabe";
+			Gtk.CellRendererText taskTitleCell = new Gtk.CellRendererText ();
+			taskColumn.PackStart (taskTitleCell, true); 
 			
 			Gtk.TreeViewColumn timesColumn = new Gtk.TreeViewColumn ();
 			timesColumn.Title = "Schicht";
@@ -78,6 +106,7 @@ namespace WidgetLibrary
 			personalTreeView.AppendColumn (fnameColumn);
 			personalTreeView.AppendColumn (lnameColumn);
 			personalTreeView.AppendColumn (areaColumn);
+			personalTreeView.AppendColumn (taskColumn);
 			personalTreeView.AppendColumn (timesColumn);
 			personalTreeView.AppendColumn (starttimeColumn);
 			personalTreeView.AppendColumn (endtimeColumn);
@@ -89,21 +118,23 @@ namespace WidgetLibrary
 			fnameColumn.AddAttribute (fnameTitleCell, "text", 0);
 			lnameColumn.AddAttribute (lnameTitleCell, "text", 1);
 			areaColumn.AddAttribute(areaTitleCell, "text", 2);
-			timesColumn.AddAttribute(timesTitleCell, "text", 3);
-			starttimeColumn.AddAttribute(starttimeTitleCell, "text", 4);
-			endtimeColumn.AddAttribute(endtimeTitleCell, "text", 5);
-			emailColumn.AddAttribute(emailTitleCell, "text", 6);
-			mobileColumn.AddAttribute(mobileTitleCell, "text", 7);
-			teleColumn.AddAttribute(teleTitleCell, "text", 8);
+			taskColumn.AddAttribute(taskTitleCell, "text", 3);
+			timesColumn.AddAttribute(timesTitleCell, "text", 4);
+			starttimeColumn.AddAttribute(starttimeTitleCell, "text", 5);
+			endtimeColumn.AddAttribute(endtimeTitleCell, "text", 6);
+			emailColumn.AddAttribute(emailTitleCell, "text", 7);
+			mobileColumn.AddAttribute(mobileTitleCell, "text", 8);
+			teleColumn.AddAttribute(teleTitleCell, "text", 9);
 			
 			
 			
 			
 			// Create a model that will hold two strings - Artist Name and Song Title
-			Gtk.ListStore stempsListStore = new Gtk.ListStore (typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string));
+
 			
 			// Add some data to the store
-			stempsListStore.AppendValues ("Martin", "Bischof", "Abteilung", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
+			stempsListStore.AppendValues ("Martin", "Bischof", "Abteilung", "Aufgabe", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
+			stempsListStore.AppendValues ("Andreas", "Stark", "Abteilung", "Aufgabe", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
 			
 			
 //			List<String[]> stempsDetail = MainClass.connection.readStemps(1); // PARAMETER neu einfügen!
@@ -115,8 +146,27 @@ namespace WidgetLibrary
 //			
 //			
 //			// Assign the model to the TreeView
+
 			personalTreeView.Model = stempsListStore;
+
+
 			
+			// Instead of assigning the ListStore model directly to the TreeStore, we create a TreeModelFilter
+			// which sits between the Model (the ListStore) and the View (the TreeView) filtering what the model sees.
+			// Some may say that this is a "Controller", even though the name and usage suggests that it is still part of
+			// the Model.
+			filter = new Gtk.TreeModelFilter (stempsListStore, null);
+			
+			// Specify the function that determines which rows to filter out and which ones to display
+			filter.VisibleFunc = new Gtk.TreeModelFilterVisibleFunc (FilterTree);
+			
+			// Assign the filter as our tree's model
+			personalTreeView.Model = filter;
+
+
+
+
+
 			
 			#endregion
 
@@ -128,9 +178,82 @@ namespace WidgetLibrary
 			
 			foreach(string s in areaList)
 				ls.AppendValues(s);
-
 			#endregion
 
+			#region typComboBox - Fill Typ
+			List<String> typList = SelectWidget.connection.readTyp();
+			ListStore typLS = new ListStore(typeof(string));
+			typCombobox.Model = typLS;
+
+			foreach(string s in typList)
+				typLS.AppendValues(s);
+			#endregion
+
+
+			#region taskComboBox - Fill Tasks
+			List<String> taskList = SelectWidget.connection.readTyp();
+			ListStore taskLS = new ListStore(typeof(string));
+			taskCombobox.Model = taskLS;
+			
+			foreach(string s in taskList)
+				taskLS.AppendValues(s);
+			#endregion
+
+
+
+		}
+
+		protected void OnAreaComboboxChanged (object sender, EventArgs e)
+		{
+
+		}
+
+
+		protected void OnPersonalTreeViewCursorChanged (object sender, EventArgs e) //Auslesen der Werte des aktuellen Datensatzes
+		{
+			TreeSelection selection = (sender as TreeView).Selection;
+			TreeModel model;
+			TreeIter iter;
+			
+			// THE ITER WILL POINT TO THE SELECTED ROW
+			if(selection.GetSelected(out model, out iter)){
+				 fname = (model.GetValue (iter, 0).ToString());
+				 lname = (model.GetValue (iter, 1).ToString());
+				 area = (model.GetValue (iter, 2).ToString());
+				 task = (model.GetValue (iter, 3).ToString());
+				 times = (model.GetValue (iter, 4).ToString());
+				 starttime = (model.GetValue (iter, 5).ToString());
+				 endtime = (model.GetValue (iter, 6).ToString());
+				 email = (model.GetValue (iter, 7).ToString());
+				 mobile = (model.GetValue (iter, 8).ToString());
+				 tele = (model.GetValue (iter, 9).ToString());
+			}
+		}
+
+		protected void OnPersonAddButtonClicked (object sender, EventArgs e)
+		{
+			/* Benutzerfenster öffnen und die ausgelesenen Daten in die Entrys schreiben
+			 * 
+			 *
+			 */
+		}
+
+		protected void OnFnameEntryChanged (object sender, EventArgs e)
+		{
+			filter.Refilter ();
+		}
+
+		private bool FilterTree (Gtk.TreeModel model, Gtk.TreeIter iter)
+		{
+			string fnameName = model.GetValue (iter, 0).ToString ();
+			
+			if (fnameEntry.Text == "")
+				return true;
+			
+			if (fnameName.IndexOf (fnameEntry.Text) > -1)
+				return true;
+			else
+				return false;
 		}
 	}
 }

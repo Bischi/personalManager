@@ -181,6 +181,7 @@
                 <property name="MemberName" />
                 <property name="IsTextCombo">True</property>
                 <property name="Items" translatable="yes" />
+                <signal name="Changed" handler="OnAreaComboboxChanged" />
               </widget>
               <packing>
                 <property name="LeftAttach">4</property>
@@ -219,6 +220,7 @@
                 <property name="CanFocus">True</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">●</property>
+                <signal name="Changed" handler="OnFnameEntryChanged" />
               </widget>
               <packing>
                 <property name="LeftAttach">1</property>
@@ -420,11 +422,10 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Entry" id="typEntry">
+              <widget class="Gtk.ComboBox" id="typCombobox">
                 <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="IsEditable">True</property>
-                <property name="InvisibleChar">●</property>
+                <property name="IsTextCombo">True</property>
+                <property name="Items" translatable="yes" />
               </widget>
               <packing>
                 <property name="TopAttach">2</property>
@@ -459,6 +460,7 @@
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="ShowScrollbars">True</property>
+                <signal name="CursorChanged" handler="OnPersonalTreeViewCursorChanged" />
               </widget>
             </child>
           </widget>
@@ -513,6 +515,7 @@
                         <property name="Icon">stock:gtk-add Menu</property>
                         <property name="Label" translatable="yes">Neu</property>
                         <property name="UseUnderline">True</property>
+                        <signal name="Clicked" handler="OnPersonAddButtonClicked" />
                       </widget>
                       <packing>
                         <property name="Expand">False</property>

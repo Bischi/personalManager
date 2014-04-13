@@ -59,13 +59,29 @@
     <EmbeddedResource Include="gtk-gui\gui.stetic">
       <LogicalName>gui.stetic</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\Clock.png" />
-    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\Clock_new.png" />
-    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\clock.jpg" />
-    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\uhr.gif" />
-    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\Clock_small.png" />
-    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\workerrer.png" />
-    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\worker_small.png" />
-    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\calender.png" />
+    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\Clock.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\Clock_new.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\clock.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\uhr.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\Clock_small.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\workerrer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\worker_small.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\..\Dokumente\Bilder\calender.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
