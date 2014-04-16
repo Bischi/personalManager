@@ -131,6 +131,94 @@ namespace WidgetLibrary
 		}
 
 
+		public override int readAreaID (string area)
+		{
+			try {
+				
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				
+				sqlite_cmd.CommandText = "SELECT id FROM tbl_area WHERE name= '"+area+"'";
+				
+				sqlite_conn.Open ();
+				
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				int readID = 0;
+				
+				while (datareader.Read())
+				{
+					readID = datareader.GetInt16(0);
+				}
+				sqlite_conn.Close ();
+				return readID; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return 0; 
+			}
+		}
+
+		public override List<string> readTasks (int areaID)
+		{
+			try {
+				
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				
+				sqlite_cmd.CommandText = "SELECT DISTINCT name FROM tbl_task inner join tbl_workplace on tbl_task.id = tbl_workplace.fk_task WHERE tbl_workplace.fk_area="+areaID+"";
+
+				sqlite_conn.Open ();
+
+				datareader = sqlite_cmd.ExecuteReader ();
+
+				string readname = "";
+				List<string> tasks = new List<string>(); // To Save tasks and return them
+
+
+				while (datareader.Read())
+				{
+					readname = datareader.GetString(0);
+					tasks.Add (readname);
+				}
+				sqlite_conn.Close (); 
+				return tasks; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return null; 
+			}
+		}
+
+		public override List<string> readTime ()
+		{
+			try {
+				
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				
+				sqlite_cmd.CommandText = "SELECT name FROM tbl_time";
+				
+				sqlite_conn.Open ();
+				
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				string readname = "";
+				List<string> times = new List<string>(); // To Save typs and return them
+				
+				while (datareader.Read())
+				{
+					readname = datareader.GetString(0);
+					times.Add (readname);
+				}
+				sqlite_conn.Close ();
+				return times; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return null; 
+			}
+		}
 
 
 

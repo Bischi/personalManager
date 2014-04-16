@@ -32,7 +32,7 @@ namespace WidgetLibrary
 		private global::Gtk.VSeparator vseparator1;
 		private global::Gtk.VBox vbox4;
 		private global::Gtk.Label PHeaderLabel;
-		private global::Gtk.HButtonBox hbuttonbox2;
+		private global::Gtk.HButtonBox managementHbuttonbox;
 		private global::Gtk.Button printButton;
 		private global::Gtk.Button printViewButton;
 		private global::Gtk.Button exportButton;
@@ -66,6 +66,8 @@ namespace WidgetLibrary
 			this.table1.ColumnSpacing = ((uint)(6));
 			// Container child table1.Gtk.Table+TableChild
 			this.areaCombobox = global::Gtk.ComboBox.NewText ();
+			this.areaCombobox.AppendText ("");
+			this.areaCombobox.AppendText ("");
 			this.areaCombobox.Name = "areaCombobox";
 			this.table1.Add (this.areaCombobox);
 			global::Gtk.Table.TableChild w2 = ((global::Gtk.Table.TableChild)(this.table1 [this.areaCombobox]));
@@ -333,12 +335,12 @@ namespace WidgetLibrary
 			w41.Position = 0;
 			w41.Expand = false;
 			// Container child vbox4.Gtk.Box+BoxChild
-			this.hbuttonbox2 = new global::Gtk.HButtonBox ();
-			this.hbuttonbox2.Name = "hbuttonbox2";
-			this.hbuttonbox2.Homogeneous = true;
-			this.hbuttonbox2.Spacing = 3;
-			this.hbuttonbox2.BorderWidth = ((uint)(3));
-			// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
+			this.managementHbuttonbox = new global::Gtk.HButtonBox ();
+			this.managementHbuttonbox.Name = "managementHbuttonbox";
+			this.managementHbuttonbox.Homogeneous = true;
+			this.managementHbuttonbox.Spacing = 3;
+			this.managementHbuttonbox.BorderWidth = ((uint)(3));
+			// Container child managementHbuttonbox.Gtk.ButtonBox+ButtonBoxChild
 			this.printButton = new global::Gtk.Button ();
 			this.printButton.CanFocus = true;
 			this.printButton.Name = "printButton";
@@ -359,11 +361,11 @@ namespace WidgetLibrary
 			w43.Add (w46);
 			w42.Add (w43);
 			this.printButton.Add (w42);
-			this.hbuttonbox2.Add (this.printButton);
-			global::Gtk.ButtonBox.ButtonBoxChild w50 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.printButton]));
+			this.managementHbuttonbox.Add (this.printButton);
+			global::Gtk.ButtonBox.ButtonBoxChild w50 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.managementHbuttonbox [this.printButton]));
 			w50.Expand = false;
 			w50.Fill = false;
-			// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
+			// Container child managementHbuttonbox.Gtk.ButtonBox+ButtonBoxChild
 			this.printViewButton = new global::Gtk.Button ();
 			this.printViewButton.CanFocus = true;
 			this.printViewButton.Name = "printViewButton";
@@ -384,12 +386,12 @@ namespace WidgetLibrary
 			w52.Add (w55);
 			w51.Add (w52);
 			this.printViewButton.Add (w51);
-			this.hbuttonbox2.Add (this.printViewButton);
-			global::Gtk.ButtonBox.ButtonBoxChild w59 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.printViewButton]));
+			this.managementHbuttonbox.Add (this.printViewButton);
+			global::Gtk.ButtonBox.ButtonBoxChild w59 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.managementHbuttonbox [this.printViewButton]));
 			w59.Position = 1;
 			w59.Expand = false;
 			w59.Fill = false;
-			// Container child hbuttonbox2.Gtk.ButtonBox+ButtonBoxChild
+			// Container child managementHbuttonbox.Gtk.ButtonBox+ButtonBoxChild
 			this.exportButton = new global::Gtk.Button ();
 			this.exportButton.CanFocus = true;
 			this.exportButton.Name = "exportButton";
@@ -410,13 +412,13 @@ namespace WidgetLibrary
 			w61.Add (w64);
 			w60.Add (w61);
 			this.exportButton.Add (w60);
-			this.hbuttonbox2.Add (this.exportButton);
-			global::Gtk.ButtonBox.ButtonBoxChild w68 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox2 [this.exportButton]));
+			this.managementHbuttonbox.Add (this.exportButton);
+			global::Gtk.ButtonBox.ButtonBoxChild w68 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.managementHbuttonbox [this.exportButton]));
 			w68.Position = 2;
 			w68.Expand = false;
 			w68.Fill = false;
-			this.vbox4.Add (this.hbuttonbox2);
-			global::Gtk.Box.BoxChild w69 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.hbuttonbox2]));
+			this.vbox4.Add (this.managementHbuttonbox);
+			global::Gtk.Box.BoxChild w69 = ((global::Gtk.Box.BoxChild)(this.vbox4 [this.managementHbuttonbox]));
 			w69.Position = 1;
 			w69.Fill = false;
 			this.hbox1.Add (this.vbox4);
@@ -433,10 +435,12 @@ namespace WidgetLibrary
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
-			this.fnameEntry.Changed += new global::System.EventHandler (this.OnFnameEntryChanged);
-			this.areaCombobox.Changed += new global::System.EventHandler (this.OnAreaComboboxChanged);
 			this.personalTreeView.CursorChanged += new global::System.EventHandler (this.OnPersonalTreeViewCursorChanged);
 			this.PersonAddButton.Clicked += new global::System.EventHandler (this.OnPersonAddButtonClicked);
+			this.PersonEditButton.Clicked += new global::System.EventHandler (this.OnPersonEditButtonClicked);
+			this.printButton.Clicked += new global::System.EventHandler (this.OnPrintButtonClicked);
+			this.printViewButton.Clicked += new global::System.EventHandler (this.OnPrintViewButtonClicked);
+			this.exportButton.Clicked += new global::System.EventHandler (this.OnExportButtonClicked);
 		}
 	}
 }

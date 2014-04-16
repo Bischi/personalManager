@@ -7,6 +7,10 @@ namespace WidgetLibrary
 	public partial class SelectWidget : Gtk.Bin
 	{
 		PersonWidget pw;
+		TimesWidget tw;
+		NewTimesWidget ntw; 
+
+
 		public static DBConnector connection;
 		
 		public SelectWidget ()
@@ -15,11 +19,15 @@ namespace WidgetLibrary
 			connection = new SQLiteConnection();
 
 			pw = new PersonWidget();
+			tw = new TimesWidget();
+			ntw = new NewTimesWidget();
 		}
 
 		public void onHomeButtonClicked()
 		{
 			this.Remove(pw);
+			this.Remove (tw);
+			this.Remove (ntw);
 			this.Add(hbuttonbox3);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
@@ -33,6 +41,7 @@ namespace WidgetLibrary
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
+			this.Name = "Pläne";
 		}
 
 		protected void onpersonButtonClicked (object sender, EventArgs e)
@@ -44,6 +53,28 @@ namespace WidgetLibrary
 				this.Child.ShowAll ();
 			}
 		}
+
+		protected void OnTimesButtonClicked (object sender, EventArgs e)
+		{
+			this.Remove(hbuttonbox3);
+			tw.SetSizeRequest(750, 650);
+			this.Add(tw);
+			if ((this.Child != null)) {
+				this.Child.ShowAll ();
+			}
+		}
+
+		public void ViewNewTimesWidget()
+		{
+			this.Remove(tw);
+			ntw.SetSizeRequest(650, 650);
+			this.Add(ntw);
+			if ((this.Child != null)) {
+				this.Child.ShowAll ();
+			}
+		}
+
+
 	}
 }
 

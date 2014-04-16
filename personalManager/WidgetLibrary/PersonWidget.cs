@@ -28,7 +28,7 @@ namespace WidgetLibrary
 
 		Gtk.TreeModelFilter filter;
 
-		Gtk.ListStore stempsListStore = new Gtk.ListStore (typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string));
+		Gtk.ListStore stempsListStore = new Gtk.ListStore (typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string));
 
 
 		public PersonWidget ()
@@ -43,8 +43,7 @@ namespace WidgetLibrary
 			PVHeaderLabel.ModifyFont (Pango.FontDescription.FromString ("Calibri, Bold 11"));
 			#endregion
 
-
-		    		#region TreeView füllen
+			    		#region TreeView füllen
 			// Create a column for the date name
 			Gtk.TreeViewColumn fnameColumn = new Gtk.TreeViewColumn ();
 			fnameColumn.Title = "Vorname";
@@ -70,6 +69,12 @@ namespace WidgetLibrary
 			taskColumn.Title = "Aufgabe";
 			Gtk.CellRendererText taskTitleCell = new Gtk.CellRendererText ();
 			taskColumn.PackStart (taskTitleCell, true); 
+
+			// Create a column for the description 
+			Gtk.TreeViewColumn typColumn = new Gtk.TreeViewColumn ();
+			typColumn.Title = "Typ";
+			Gtk.CellRendererText typTitleCell = new Gtk.CellRendererText ();
+			typColumn.PackStart (typTitleCell, true); 
 			
 			Gtk.TreeViewColumn timesColumn = new Gtk.TreeViewColumn ();
 			timesColumn.Title = "Schicht";
@@ -107,6 +112,7 @@ namespace WidgetLibrary
 			personalTreeView.AppendColumn (lnameColumn);
 			personalTreeView.AppendColumn (areaColumn);
 			personalTreeView.AppendColumn (taskColumn);
+			personalTreeView.AppendColumn (typColumn);
 			personalTreeView.AppendColumn (timesColumn);
 			personalTreeView.AppendColumn (starttimeColumn);
 			personalTreeView.AppendColumn (endtimeColumn);
@@ -119,12 +125,13 @@ namespace WidgetLibrary
 			lnameColumn.AddAttribute (lnameTitleCell, "text", 1);
 			areaColumn.AddAttribute(areaTitleCell, "text", 2);
 			taskColumn.AddAttribute(taskTitleCell, "text", 3);
-			timesColumn.AddAttribute(timesTitleCell, "text", 4);
-			starttimeColumn.AddAttribute(starttimeTitleCell, "text", 5);
-			endtimeColumn.AddAttribute(endtimeTitleCell, "text", 6);
-			emailColumn.AddAttribute(emailTitleCell, "text", 7);
-			mobileColumn.AddAttribute(mobileTitleCell, "text", 8);
-			teleColumn.AddAttribute(teleTitleCell, "text", 9);
+			typColumn.AddAttribute(typTitleCell, "text", 4);
+			timesColumn.AddAttribute(timesTitleCell, "text", 5);
+			starttimeColumn.AddAttribute(starttimeTitleCell, "text", 6);
+			endtimeColumn.AddAttribute(endtimeTitleCell, "text", 7);
+			emailColumn.AddAttribute(emailTitleCell, "text", 8);
+			mobileColumn.AddAttribute(mobileTitleCell, "text", 9);
+			teleColumn.AddAttribute(teleTitleCell, "text", 10);
 			
 			
 			
@@ -133,8 +140,8 @@ namespace WidgetLibrary
 
 			
 			// Add some data to the store
-			stempsListStore.AppendValues ("Martin", "Bischof", "Abteilung", "Aufgabe", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
-			stempsListStore.AppendValues ("Andreas", "Stark", "Abteilung", "Aufgabe", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
+			stempsListStore.AppendValues ("Martin", "Bischof", "Wein", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
+			stempsListStore.AppendValues ("Andreas", "Stark", "Abteilung", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
 			
 			
 //			List<String[]> stempsDetail = MainClass.connection.readStemps(1); // PARAMETER neu einfügen!
@@ -163,11 +170,6 @@ namespace WidgetLibrary
 			// Assign the filter as our tree's model
 			personalTreeView.Model = filter;
 
-
-
-
-
-			
 			#endregion
 
 			#region areaComboBox - Fill areas
@@ -178,6 +180,8 @@ namespace WidgetLibrary
 			
 			foreach(string s in areaList)
 				ls.AppendValues(s);
+
+			ls.AppendValues ("");
 			#endregion
 
 			#region typComboBox - Fill Typ
@@ -187,27 +191,38 @@ namespace WidgetLibrary
 
 			foreach(string s in typList)
 				typLS.AppendValues(s);
-			#endregion
 
+			typLS.AppendValues("");
+			#endregion
 
 			#region taskComboBox - Fill Tasks
-			List<String> taskList = SelectWidget.connection.readTyp();
-			ListStore taskLS = new ListStore(typeof(string));
-			taskCombobox.Model = taskLS;
-			
-			foreach(string s in taskList)
-				taskLS.AppendValues(s);
+			int readAreaID = SelectWidget.connection.readAreaID(areaCombobox.ActiveText);
+			if(readAreaID != 0)
+			{
+				List<String> taskList = SelectWidget.connection.readTasks(readAreaID);
+				ListStore taskLS = new ListStore(typeof(string));
+				taskCombobox.Model = taskLS;
+				
+				foreach(string s in taskList)
+					taskLS.AppendValues(s);
+				
+				taskLS.AppendValues("");
+			}
+
+
 			#endregion
 
-
-
+			#region timesComboBox - Fill Times
+			List<String> timeList = SelectWidget.connection.readTime();
+			ListStore timeLS = new ListStore(typeof(string));
+			timesCombobox.Model = timeLS;
+			
+			foreach(string s in timeList)
+				timeLS.AppendValues(s);
+			
+			timeLS.AppendValues("");
+			#endregion
 		}
-
-		protected void OnAreaComboboxChanged (object sender, EventArgs e)
-		{
-
-		}
-
 
 		protected void OnPersonalTreeViewCursorChanged (object sender, EventArgs e) //Auslesen der Werte des aktuellen Datensatzes
 		{
@@ -233,8 +248,25 @@ namespace WidgetLibrary
 		protected void OnPersonAddButtonClicked (object sender, EventArgs e)
 		{
 			/* Benutzerfenster öffnen und die ausgelesenen Daten in die Entrys schreiben
-			 * 
+			 * WorkerWidget WW = new WorkerWidget();
 			 *
+			 this.Remove(hbuttonbox3);
+			 this.Add(pw);
+			 if ((this.Child != null)) 
+			 {
+				this.Child.ShowAll ();
+			 }
+			 */
+
+		}
+
+		protected void OnPersonEditButtonClicked (object sender, EventArgs e)
+		{
+			/* 
+ 			 * SelectWidget sw = (SelectWidget) this.Parent;
+			   w.ViewNewTimesWidget();
+			 * 
+			 * 
 			 */
 		}
 
@@ -243,17 +275,94 @@ namespace WidgetLibrary
 			filter.Refilter ();
 		}
 
+		#region Filtering of ListView
+
 		private bool FilterTree (Gtk.TreeModel model, Gtk.TreeIter iter)
 		{
 			string fnameName = model.GetValue (iter, 0).ToString ();
-			
-			if (fnameEntry.Text == "")
+			string lnameName = model.GetValue (iter, 1).ToString ();
+			string areaName = model.GetValue (iter, 2).ToString ();
+			string taskName = model.GetValue (iter, 3).ToString ();
+			string typName = model.GetValue (iter, 4).ToString ();
+			string timesName = model.GetValue (iter, 5).ToString ();
+
+			if (fnameEntry.Text == "" && lnameEntry.Text == "" && areaCombobox.ActiveText == null && taskCombobox.ActiveText == null && typCombobox.ActiveText == null && timesCombobox.ActiveText == null)
 				return true;
+			string areaComboboxValue = "";
+			if(areaCombobox.ActiveText != null)
+				areaComboboxValue = areaCombobox.ActiveText;
+
+			string taskComboboxValue = "";
+			if(taskCombobox.ActiveText != null)
+				taskComboboxValue = taskCombobox.ActiveText;
 			
-			if (fnameName.IndexOf (fnameEntry.Text) > -1)
+			string typComboboxValue = "";
+			if(typCombobox.ActiveText != null)
+				typComboboxValue = typCombobox.ActiveText;
+
+			string timesComboboxValue = "";
+			if(timesCombobox.ActiveText != null)
+				timesComboboxValue = timesCombobox.ActiveText;
+
+			if (fnameName.IndexOf (fnameEntry.Text) > -1 && lnameName.IndexOf (lnameEntry.Text) > -1 && areaName.IndexOf (areaComboboxValue) > -1 && taskName.IndexOf (taskComboboxValue) > -1 && typName.IndexOf (typComboboxValue) > -1 && timesName.IndexOf (timesComboboxValue) > -1)
 				return true;
 			else
 				return false;
+		}
+
+		protected void OnLnameEntryChanged (object sender, EventArgs e)
+		{
+			filter.Refilter ();
+		}
+
+		protected void OnAreaComboboxChanged (object sender, EventArgs e)
+		{
+			int readAreaID = SelectWidget.connection.readAreaID(areaCombobox.ActiveText);
+			if(readAreaID != 0)
+			{
+				List<String> taskList = SelectWidget.connection.readTasks(readAreaID);
+
+				ListStore taskLS = new ListStore(typeof(string));
+				taskCombobox.Model = taskLS;
+				
+				foreach(string s in taskList)
+					taskLS.AppendValues(s);
+				
+				taskLS.AppendValues("");
+			}
+			filter.Refilter ();
+		}
+
+		protected void OnTaskComboboxChanged (object sender, EventArgs e)
+		{
+			filter.Refilter ();
+		}
+
+		protected void OnTimesComboboxChanged (object sender, EventArgs e)
+		{
+			filter.Refilter ();
+		}
+
+		protected void OnTypComboboxChanged (object sender, EventArgs e)
+		{
+			filter.Refilter ();
+		}
+		#endregion
+
+
+		protected void OnPrintButtonClicked (object sender, EventArgs e)
+		{
+			Print pr = new Print();
+		}
+
+		protected void OnPrintViewButtonClicked (object sender, EventArgs e)
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		protected void OnExportButtonClicked (object sender, EventArgs e)
+		{
+			throw new System.NotImplementedException ();
 		}
 	}
 }

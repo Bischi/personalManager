@@ -129,6 +129,7 @@ namespace WidgetLibrary
 			this.Hide ();
 			this.planButton.Clicked += new global::System.EventHandler (this.onplanButtonClicked);
 			this.personButton.Clicked += new global::System.EventHandler (this.onpersonButtonClicked);
+			this.timesButton.Clicked += new global::System.EventHandler (this.OnTimesButtonClicked);
 		}
 	}
 }

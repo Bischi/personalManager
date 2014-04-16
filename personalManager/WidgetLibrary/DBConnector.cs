@@ -29,5 +29,8 @@ namespace WidgetLibrary
 		public abstract List<string> readAreas();
 		public abstract List<string> readTyp();
 //		public abstract List<String[]> readTasks(int areaID); // AUfgaben auslesen
+		public abstract int readAreaID(String area);
+		public abstract List<string> readTasks(int areaID);
+		public abstract List<string> readTime();
 	}
 }
