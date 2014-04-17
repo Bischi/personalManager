@@ -9,6 +9,7 @@ namespace WidgetLibrary
 		PersonWidget pw;
 		TimesWidget tw;
 		NewTimesWidget ntw; 
+		WorkerWidget ww;
 
 
 		public static DBConnector connection;
@@ -21,6 +22,7 @@ namespace WidgetLibrary
 			pw = new PersonWidget();
 			tw = new TimesWidget();
 			ntw = new NewTimesWidget();
+			ww = new WorkerWidget();
 		}
 
 		public void onHomeButtonClicked()
@@ -74,7 +76,18 @@ namespace WidgetLibrary
 			}
 		}
 
-
+		public void ViewWorkerWidgket()
+		{
+			this.Remove(hbuttonbox3);
+//			this.Remove (pw);
+//			this.Remove (ntw);
+//			this.Remove (tw);
+			ww.SetSizeRequest(650, 650);
+			this.Add(ww);
+			if ((this.Child != null)) {
+				this.Child.ShowAll ();
+			}
+		}
 	}
 }
 

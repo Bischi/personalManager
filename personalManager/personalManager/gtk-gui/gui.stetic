@@ -41,11 +41,12 @@
         <property name="Label" translatable="yes">Schichten</property>
         <property name="ShortLabel" translatable="yes">Schichten</property>
       </action>
-      <action id="addAction">
+      <action id="addWorker">
         <property name="Type">Action</property>
         <property name="Label" translatable="yes">Neu</property>
         <property name="ShortLabel" translatable="yes">Neu</property>
         <property name="StockId">gtk-add</property>
+        <signal name="Activated" handler="OnAddWorkerActivated" />
       </action>
       <action id="orientationPortraitAction">
         <property name="Type">Action</property>
@@ -95,7 +96,7 @@
                 <node type="Menuitem" action="openAction" />
               </node>
               <node type="Menu" action="PersonenAction">
-                <node type="Menuitem" action="addAction" />
+                <node type="Menuitem" action="addWorker" />
                 <node type="Menuitem" action="orientationPortraitAction" />
               </node>
               <node type="Menu" action="SchichtenAction">
@@ -119,7 +120,7 @@
               <node type="Separator" />
               <node type="Toolitem" action="openAction" />
               <node type="Separator" />
-              <node type="Toolitem" action="addAction" />
+              <node type="Toolitem" action="addWorker" />
               <node type="Toolitem" action="orientationPortraitAction" />
               <node type="Separator" />
               <node type="Toolitem" action="ffnenAction" />

@@ -220,6 +220,24 @@ namespace WidgetLibrary
 			}
 		}
 
+		public override bool addWorker (string fname, string lname, string village, string hnr, Int32 plz, string email, string mobile, string telephone, string street)
+		{
+			try 
+			{
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "INSERT INTO tbl_worker (fname, lname, hnr, PLZ, village, email, mobile, telephone, street) VALUES ('"+fname+"', '"+lname+"','"+hnr+"','"+plz+"','"+village+"','"+email+"','"+mobile+"','"+telephone+"')";
+				sqlite_conn.Open(); 
+				sqlite_cmd.ExecuteNonQuery();
+				sqlite_conn.Close();
+				return true;
+			} 
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return false;
+			}
+		}
+
 
 
 

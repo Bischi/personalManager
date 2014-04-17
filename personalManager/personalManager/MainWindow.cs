@@ -43,10 +43,9 @@ public partial class MainWindow: Gtk.Window
 		this.ReshowWithInitialSize();
 	} //Home-Button pressed
 
-
-
-
-
-
-
+	protected void OnAddWorkerActivated (object sender, EventArgs e)
+	{
+		SelectWidget w = (SelectWidget) this.Parent;
+		w.ViewNewTimesWidget();
+	}
 }

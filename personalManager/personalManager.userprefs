@@ -1,24 +1,23 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WidgetLibrary/WorkerWidget.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WidgetLibrary/SelectWidget.cs">
     <Files>
-      <File FileName="personalManager/Main.cs" Line="13" Column="1" />
-      <File FileName="personalManager/MainWindow.cs" Line="1" Column="1" />
-      <File FileName="WidgetLibrary/SQLiteConnection.cs" Line="199" Column="56" />
-      <File FileName="WidgetLibrary/DBConnector.cs" Line="34" Column="40" />
-      <File FileName="personalManager/gtk-gui/MainWindow.cs" Line="178" Column="1" />
-      <File FileName="WidgetLibrary/TimesWidget.cs" Line="116" Column="1" />
-      <File FileName="WidgetLibrary/PersonWidget.cs" Line="367" Column="1" />
-      <File FileName="WidgetLibrary/SelectWidget.cs" Line="6" Column="10" />
+      <File FileName="personalManager/Main.cs" Line="15" Column="3" />
+      <File FileName="personalManager/MainWindow.cs" Line="49" Column="26" />
+      <File FileName="WidgetLibrary/SQLiteConnection.cs" Line="228" Column="112" />
+      <File FileName="WidgetLibrary/DBConnector.cs" Line="35" Column="3" />
+      <File FileName="WidgetLibrary/TimesWidget.cs" Line="1" Column="1" />
+      <File FileName="WidgetLibrary/PersonWidget.cs" Line="1" Column="1" />
+      <File FileName="WidgetLibrary/SelectWidget.cs" Line="84" Column="21" />
       <File FileName="WidgetLibrary/NewTimesWidget.cs" Line="1" Column="1" />
-      <File FileName="WidgetLibrary/WorkerWidget.cs" Line="17" Column="8" />
+      <File FileName="WidgetLibrary/WorkerWidget.cs" Line="17" Column="197" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="personalManager" expanded="True" />
           <Node name="WidgetLibrary" expanded="True">
-            <Node name="WorkerWidget.cs" selected="True" />
+            <Node name="SelectWidget.cs" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -29,7 +28,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/home/bischof/Dokumente/MV_Thueringerberg/Bezirksmusikfest/Software/personalManager/personalManager/WidgetLibrary/SQLiteConnection.cs" line="1085" />
+      <Breakpoint file="/home/bischof/Dokumente/MV_Thueringerberg/Bezirksmusikfest/Software/personalManager/personalManager/WidgetLibrary/SQLiteConnection.cs" line="1103" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
