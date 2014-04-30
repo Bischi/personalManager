@@ -251,6 +251,7 @@ namespace WidgetLibrary
 
 		}
 
+		#region Add Worker
 		private int readWorkerID(string fname, string lname, string village, string hnr, Int32 plz, string email, string mobile, string telephone, string street)
 		{
 			try {
@@ -275,23 +276,108 @@ namespace WidgetLibrary
 			}
 		}
 
+		public override int readTaskID (string name)
+		{
+			try {
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "SELECT id FROM tbl_task WHERE name ='"+name+"'";
+				sqlite_conn.Open ();
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				int readID = 0;
+				
+				while (datareader.Read())
+				{
+					readID = datareader.GetInt16(0);
+				}
+				sqlite_conn.Close ();
+				return readID; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return 0; 
+			}
+		}
 
+		public override int readTypID (string name)
+		{
+			try {
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "SELECT id FROM tbl_typ WHERE name ='"+name+"'";
+				sqlite_conn.Open ();
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				int readID = 0;
+				
+				while (datareader.Read())
+				{
+					readID = datareader.GetInt16(0);
+				}
+				sqlite_conn.Close ();
+				return readID; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return 0; 
+			}
+		}
 
+		public override int readWorkplaceID (int fk_area, int fk_task, int fk_typ)
+		{
+			try {
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "SELECT id FROM tbl_workplace WHERE fk_area ='"+fk_area+"', fk_task = '"+fk_task+"', fk_typ = '"+fk_typ+"'";
+				sqlite_conn.Open ();
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				int readID = 0;
+				
+				while (datareader.Read())
+				{
+					readID = datareader.GetInt16(0);
+				}
+				sqlite_conn.Close ();
+				return readID; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return 0; 
+			}
+		}
 
+		public override int readTimeID (string name)
+		{
+			try {
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "SELECT id FROM tbl_time WHERE name ='"+name+"'";
+				sqlite_conn.Open ();
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				int readID = 0;
+				
+				while (datareader.Read())
+				{
+					readID = datareader.GetInt16(0);
+				}
+				sqlite_conn.Close ();
+				return readID; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return 0; 
+			}
+		}
 
+		public override bool addToTime (int id, int fk_worker, int fk_workplace)
+		{
+			throw new System.NotImplementedException ();
+		}
 
-
-
-
-
-
-
-
-
-
-
-
-
+		#endregion
 /*
 
 

@@ -71,7 +71,14 @@ namespace WidgetLibrary
 		{
 			if (checkTextBoxValue() == true) {
 				bool addOK = SelectWidget.connection.addWorker (fnameEntry.Text, lnameEntry.Text, villageEntry.Text, hnrEntry.Text, Convert.ToInt32 (plzEntry.Text), emailEntry.Text, mobileEntry.Text, telEntry.Text, streetEntry.Text);
-			
+				int readWorkerID = SelectWidget.connection.readWorkerID (fnameEntry.Text, lnameEntry.Text, villageEntry.Text, hnrEntry.Text, emailEntry.Text);
+				int readAreaID = SelectWidget.connection.readAreaID(areaCombobox.ActiveText);
+				int readTaskID = SelectWidget.connection.readTaskID(taskCombobox.ActiveText);
+				int readTypID = SelectWidget.connection.readTypID(typCombobox.ActiveText);
+
+				int readWorkplaceID; 
+				bool addToTimes;
+
 				if(addOK = true)
 				{
 					fnameEntry.Text = "";
