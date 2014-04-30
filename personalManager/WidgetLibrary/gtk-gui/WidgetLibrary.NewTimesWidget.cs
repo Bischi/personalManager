@@ -26,8 +26,8 @@ namespace WidgetLibrary
 		private global::Gtk.Label label5;
 		private global::Gtk.Entry nameEntry;
 		private global::Gtk.Table table3;
-		private global::Gtk.Button button560;
-		private global::Gtk.Button button561;
+		private global::Gtk.Button saveButton;
+		private global::Gtk.Button backButton;
 		private global::Gtk.ToggleButton editTogglebutton;
 		
 		protected virtual void Build ()
@@ -266,10 +266,10 @@ namespace WidgetLibrary
 			this.table3.RowSpacing = ((uint)(6));
 			this.table3.ColumnSpacing = ((uint)(6));
 			// Container child table3.Gtk.Table+TableChild
-			this.button560 = new global::Gtk.Button ();
-			this.button560.CanFocus = true;
-			this.button560.Name = "button560";
-			this.button560.UseUnderline = true;
+			this.saveButton = new global::Gtk.Button ();
+			this.saveButton.CanFocus = true;
+			this.saveButton.Name = "button560";
+			this.saveButton.UseUnderline = true;
 			// Container child button560.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w21 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
@@ -285,15 +285,15 @@ namespace WidgetLibrary
 			w25.UseUnderline = true;
 			w22.Add (w25);
 			w21.Add (w22);
-			this.button560.Add (w21);
-			this.table3.Add (this.button560);
-			global::Gtk.Table.TableChild w29 = ((global::Gtk.Table.TableChild)(this.table3 [this.button560]));
+			this.saveButton.Add (w21);
+			this.table3.Add (this.saveButton);
+			global::Gtk.Table.TableChild w29 = ((global::Gtk.Table.TableChild)(this.table3 [this.saveButton]));
 			w29.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
-			this.button561 = new global::Gtk.Button ();
-			this.button561.CanFocus = true;
-			this.button561.Name = "button561";
-			this.button561.UseUnderline = true;
+			this.backButton = new global::Gtk.Button ();
+			this.backButton.CanFocus = true;
+			this.backButton.Name = "button561";
+			this.backButton.UseUnderline = true;
 			// Container child button561.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w30 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
@@ -309,9 +309,9 @@ namespace WidgetLibrary
 			w34.UseUnderline = true;
 			w31.Add (w34);
 			w30.Add (w31);
-			this.button561.Add (w30);
-			this.table3.Add (this.button561);
-			global::Gtk.Table.TableChild w38 = ((global::Gtk.Table.TableChild)(this.table3 [this.button561]));
+			this.backButton.Add (w30);
+			this.table3.Add (this.backButton);
+			global::Gtk.Table.TableChild w38 = ((global::Gtk.Table.TableChild)(this.table3 [this.backButton]));
 			w38.LeftAttach = ((uint)(2));
 			w38.RightAttach = ((uint)(3));
 			w38.YOptions = ((global::Gtk.AttachOptions)(4));

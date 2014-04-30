@@ -45,7 +45,7 @@ public partial class MainWindow: Gtk.Window
 
 	protected void OnAddWorkerActivated (object sender, EventArgs e)
 	{
-		SelectWidget w = (SelectWidget) this.Parent;
-		w.ViewNewTimesWidget();
+//		SelectWidget w = (SelectWidget) this.Parent;
+//		w.ViewNewTimesWidget();
 	}
 }

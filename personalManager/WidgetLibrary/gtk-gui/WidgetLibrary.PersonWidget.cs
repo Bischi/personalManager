@@ -435,6 +435,12 @@ namespace WidgetLibrary
 				this.Child.ShowAll ();
 			}
 			this.Hide ();
+			this.typCombobox.Changed += new global::System.EventHandler (this.OnTypComboboxChanged);
+			this.timesCombobox.Changed += new global::System.EventHandler (this.OnTimesComboboxChanged);
+			this.taskCombobox.Changed += new global::System.EventHandler (this.OnTaskComboboxChanged);
+			this.lnameEntry.Changed += new global::System.EventHandler (this.OnLnameEntryChanged);
+			this.fnameEntry.Changed += new global::System.EventHandler (this.OnFnameEntryChanged);
+			this.areaCombobox.Changed += new global::System.EventHandler (this.OnAreaComboboxChanged);
 			this.personalTreeView.CursorChanged += new global::System.EventHandler (this.OnPersonalTreeViewCursorChanged);
 			this.PersonAddButton.Clicked += new global::System.EventHandler (this.OnPersonAddButtonClicked);
 			this.PersonEditButton.Clicked += new global::System.EventHandler (this.OnPersonEditButtonClicked);

@@ -30,6 +30,7 @@ namespace WidgetLibrary
 			this.Remove(pw);
 			this.Remove (tw);
 			this.Remove (ntw);
+			this.Remove (ww);
 			this.Add(hbuttonbox3);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
@@ -79,11 +80,21 @@ namespace WidgetLibrary
 		public void ViewWorkerWidgket()
 		{
 			this.Remove(hbuttonbox3);
-//			this.Remove (pw);
-//			this.Remove (ntw);
-//			this.Remove (tw);
+			this.Remove (pw);
+			this.Remove (ntw);
+			this.Remove (tw);
 			ww.SetSizeRequest(650, 650);
 			this.Add(ww);
+			if ((this.Child != null)) {
+				this.Child.ShowAll ();
+			}
+		}
+
+		public void ViewPersonWidget()
+		{
+			this.Remove(ww);
+			pw.SetSizeRequest(750, 650);
+			this.Add(pw);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}

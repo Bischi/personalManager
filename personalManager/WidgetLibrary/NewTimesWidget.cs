@@ -9,6 +9,21 @@ namespace WidgetLibrary
 		{
 			this.Build ();
 		}
+
+		protected void OnSaveButtonClicked (object sender, EventArgs e)
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		protected void OnEditTogglebuttonClicked (object sender, EventArgs e)
+		{
+			throw new System.NotImplementedException ();
+		}
+
+		protected void OnBackButtonClicked (object sender, EventArgs e)
+		{
+			throw new System.NotImplementedException ();
+		}
 	}
 }
 

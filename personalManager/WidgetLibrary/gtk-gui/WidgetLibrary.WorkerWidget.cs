@@ -39,12 +39,12 @@ namespace WidgetLibrary
 		private global::Gtk.Label label24;
 		private global::Gtk.Label label25;
 		private global::Gtk.ComboBox taskCombobox;
-		private global::Gtk.ComboBox timeCombobox;
+		private global::Gtk.ComboBox timesCombobox;
 		private global::Gtk.ComboBox typCombobox;
 		private global::Gtk.HSeparator hseparator1;
 		private global::Gtk.HButtonBox hbuttonbox1;
 		private global::Gtk.Button saveButton;
-		private global::Gtk.Button button18;
+		private global::Gtk.ToggleButton editToggleButton;
 		private global::Gtk.Button backButton;
 		
 		protected virtual void Build ()
@@ -406,10 +406,10 @@ namespace WidgetLibrary
 			w31.XOptions = ((global::Gtk.AttachOptions)(4));
 			w31.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child timeTable.Gtk.Table+TableChild
-			this.timeCombobox = global::Gtk.ComboBox.NewText ();
-			this.timeCombobox.Name = "timeCombobox";
-			this.timeTable.Add (this.timeCombobox);
-			global::Gtk.Table.TableChild w32 = ((global::Gtk.Table.TableChild)(this.timeTable [this.timeCombobox]));
+			this.timesCombobox = global::Gtk.ComboBox.NewText ();
+			this.timesCombobox.Name = "timesCombobox";
+			this.timeTable.Add (this.timesCombobox);
+			global::Gtk.Table.TableChild w32 = ((global::Gtk.Table.TableChild)(this.timeTable [this.timesCombobox]));
 			w32.TopAttach = ((uint)(3));
 			w32.BottomAttach = ((uint)(4));
 			w32.LeftAttach = ((uint)(1));
@@ -480,11 +480,12 @@ namespace WidgetLibrary
 			w46.Expand = false;
 			w46.Fill = false;
 			// Container child hbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
-			this.button18 = new global::Gtk.Button ();
-			this.button18.CanFocus = true;
-			this.button18.Name = "button18";
-			this.button18.UseUnderline = true;
-			// Container child button18.Gtk.Container+ContainerChild
+			this.editToggleButton = new global::Gtk.ToggleButton ();
+			this.editToggleButton.CanFocus = true;
+			this.editToggleButton.Name = "editToggleButton";
+			this.editToggleButton.UseUnderline = true;
+			this.editToggleButton.Active = true;
+			// Container child editToggleButton.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w47 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w48 = new global::Gtk.HBox ();
@@ -499,18 +500,18 @@ namespace WidgetLibrary
 			w51.UseUnderline = true;
 			w48.Add (w51);
 			w47.Add (w48);
-			this.button18.Add (w47);
-			this.hbuttonbox1.Add (this.button18);
-			global::Gtk.ButtonBox.ButtonBoxChild w55 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox1 [this.button18]));
+			this.editToggleButton.Add (w47);
+			this.hbuttonbox1.Add (this.editToggleButton);
+			global::Gtk.ButtonBox.ButtonBoxChild w55 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox1 [this.editToggleButton]));
 			w55.Position = 1;
 			w55.Expand = false;
 			w55.Fill = false;
 			// Container child hbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
 			this.backButton = new global::Gtk.Button ();
 			this.backButton.CanFocus = true;
-			this.backButton.Name = "button19";
+			this.backButton.Name = "backButton";
 			this.backButton.UseUnderline = true;
-			// Container child button19.Gtk.Container+ContainerChild
+			// Container child backButton.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w56 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w57 = new global::Gtk.HBox ();
@@ -541,9 +542,10 @@ namespace WidgetLibrary
 				this.Child.ShowAll ();
 			}
 			this.Show ();
+			this.areaCombobox.Changed += new global::System.EventHandler (this.OnAreaComboboxChanged);
 			this.saveButton.Clicked += new global::System.EventHandler (this.OnSaveButtonClicked);
-			this.button18.Clicked += new global::System.EventHandler (this.OnButton18Clicked);
-			this.backButton.Clicked += new global::System.EventHandler (this.OnButton19Clicked);
+			this.editToggleButton.Activated += new global::System.EventHandler (this.OnEditToggleButtonActivated);
+			this.backButton.Clicked += new global::System.EventHandler (this.OnBackButtonClicked);
 		}
 	}
 }

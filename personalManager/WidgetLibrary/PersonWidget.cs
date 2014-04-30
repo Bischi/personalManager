@@ -247,17 +247,8 @@ namespace WidgetLibrary
 
 		protected void OnPersonAddButtonClicked (object sender, EventArgs e)
 		{
-			/* Benutzerfenster öffnen und die ausgelesenen Daten in die Entrys schreiben
-			 * WorkerWidget WW = new WorkerWidget();
-			 *
-			 this.Remove(hbuttonbox3);
-			 this.Add(pw);
-			 if ((this.Child != null)) 
-			 {
-				this.Child.ShowAll ();
-			 }
-			 */
-
+			SelectWidget sw = (SelectWidget) this.Parent;
+			sw.ViewWorkerWidgket();
 		}
 
 		protected void OnPersonEditButtonClicked (object sender, EventArgs e)
@@ -348,7 +339,6 @@ namespace WidgetLibrary
 			filter.Refilter ();
 		}
 		#endregion
-
 
 		protected void OnPrintButtonClicked (object sender, EventArgs e)
 		{

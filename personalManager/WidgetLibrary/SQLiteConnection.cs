@@ -76,22 +76,22 @@ namespace WidgetLibrary
 			try {
 				
 				sqlite_cmd = sqlite_conn.CreateCommand ();
-				
+				if(sqlite_conn.State == ConnectionState.Closed)
+					sqlite_conn.Open();
 				sqlite_cmd.CommandText = "SELECT name FROM tbl_area";
-
 				
 				datareader = sqlite_cmd.ExecuteReader ();
 				
 				string readname = ""; 
-				List<string> areas = new List<string>(); // To Save Areas and return them
+				List<string> areaLIST = new List<string>(); // To Save Areas and return them
 
 				while (datareader.Read())
 				{
 					readname = datareader.GetString(0);
-					areas.Add (readname);
+					areaLIST.Add (readname);
 				}
 				sqlite_conn.Close ();
-				return areas; 
+				return areaLIST; 
 			}  
 			catch (Exception ex) 
 			{
@@ -229,12 +229,49 @@ namespace WidgetLibrary
 				sqlite_conn.Open(); 
 				sqlite_cmd.ExecuteNonQuery();
 				sqlite_conn.Close();
+
+				int WorkerID = this.readWorkerID(fname, lname, village, hnr, plz, email, mobile, telephone, street);
+
+				if(WorkerID != 0)
+				{
+
+				}
+
+
+
+
 				return true;
 			} 
 			catch (Exception ex) 
 			{
 				sqlite_conn.Close ();
 				return false;
+			}
+
+
+		}
+
+		private int readWorkerID(string fname, string lname, string village, string hnr, Int32 plz, string email, string mobile, string telephone, string street)
+		{
+			try {
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "SELECT id FROM tbl_worker WHERE fname= '"+fname+"' AND lname= '"+lname+"'AND village= '"+village+"' AND hnr= '"+hnr+"' AND plz= '"+plz+"' AND email= '"+email+"' AND mobile= '"+mobile+"' AND telephone= '"+telephone+"' AND street= '"+street+"'";
+				sqlite_conn.Open ();
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				int readID = 0;
+				
+				while (datareader.Read())
+				{
+					readID = datareader.GetInt16(0);
+				}
+				sqlite_conn.Close ();
+				return readID; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return 0; 
 			}
 		}
 

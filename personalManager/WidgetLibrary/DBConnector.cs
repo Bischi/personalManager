@@ -33,6 +33,6 @@ namespace WidgetLibrary
 		public abstract List<string> readTasks(int areaID);
 		public abstract List<string> readTime();
 
-		public abstract bool addWorker (String fname, String lname, String village, String hnr, Int32 plz, String email, String mobile, String telephone);
+		public abstract bool addWorker (String fname, String lname, String village, String hnr, Int32 plz, String email, String mobile, String telephone, String street);
 	}
 }

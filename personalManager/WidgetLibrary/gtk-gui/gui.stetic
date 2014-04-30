@@ -183,6 +183,7 @@
                 <property name="IsTextCombo">True</property>
                 <property name="Items" translatable="yes">
 </property>
+                <signal name="Changed" handler="OnAreaComboboxChanged" />
               </widget>
               <packing>
                 <property name="LeftAttach">4</property>
@@ -221,6 +222,7 @@
                 <property name="CanFocus">True</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">●</property>
+                <signal name="Changed" handler="OnFnameEntryChanged" />
               </widget>
               <packing>
                 <property name="LeftAttach">1</property>
@@ -363,6 +365,7 @@
                 <property name="CanFocus">True</property>
                 <property name="IsEditable">True</property>
                 <property name="InvisibleChar">●</property>
+                <signal name="Changed" handler="OnLnameEntryChanged" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -384,6 +387,7 @@
                 <property name="MemberName" />
                 <property name="IsTextCombo">True</property>
                 <property name="Items" translatable="yes" />
+                <signal name="Changed" handler="OnTaskComboboxChanged" />
               </widget>
               <packing>
                 <property name="TopAttach">1</property>
@@ -405,6 +409,7 @@
                 <property name="MemberName" />
                 <property name="IsTextCombo">True</property>
                 <property name="Items" translatable="yes" />
+                <signal name="Changed" handler="OnTimesComboboxChanged" />
               </widget>
               <packing>
                 <property name="TopAttach">2</property>
@@ -426,6 +431,7 @@
                 <property name="MemberName" />
                 <property name="IsTextCombo">True</property>
                 <property name="Items" translatable="yes" />
+                <signal name="Changed" handler="OnTypComboboxChanged" />
               </widget>
               <packing>
                 <property name="TopAttach">2</property>
@@ -1047,33 +1053,14 @@ Sonntag</property>
             <property name="RowSpacing">6</property>
             <property name="ColumnSpacing">6</property>
             <child>
-              <widget class="Gtk.Button" id="button560">
-                <property name="MemberName" />
-                <property name="CanFocus">True</property>
-                <property name="Type">TextAndIcon</property>
-                <property name="Icon">stock:gtk-floppy Menu</property>
-                <property name="Label" translatable="yes">Speichern</property>
-                <property name="UseUnderline">True</property>
-              </widget>
-              <packing>
-                <property name="AutoSize">False</property>
-                <property name="YOptions">Fill</property>
-                <property name="XExpand">True</property>
-                <property name="XFill">True</property>
-                <property name="XShrink">False</property>
-                <property name="YExpand">False</property>
-                <property name="YFill">True</property>
-                <property name="YShrink">False</property>
-              </packing>
-            </child>
-            <child>
-              <widget class="Gtk.Button" id="button561">
+              <widget class="Gtk.Button" id="backButton">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Type">TextAndIcon</property>
                 <property name="Icon">stock:gtk-ok Menu</property>
                 <property name="Label" translatable="yes">Zurück</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnBackButtonClicked" />
               </widget>
               <packing>
                 <property name="LeftAttach">2</property>
@@ -1096,10 +1083,32 @@ Sonntag</property>
                 <property name="Icon">stock:gtk-edit Menu</property>
                 <property name="Label" translatable="yes">Bearbeiten</property>
                 <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnEditTogglebuttonClicked" />
               </widget>
               <packing>
                 <property name="LeftAttach">1</property>
                 <property name="RightAttach">2</property>
+                <property name="AutoSize">False</property>
+                <property name="YOptions">Fill</property>
+                <property name="XExpand">True</property>
+                <property name="XFill">True</property>
+                <property name="XShrink">False</property>
+                <property name="YExpand">False</property>
+                <property name="YFill">True</property>
+                <property name="YShrink">False</property>
+              </packing>
+            </child>
+            <child>
+              <widget class="Gtk.Button" id="saveButton">
+                <property name="MemberName" />
+                <property name="CanFocus">True</property>
+                <property name="Type">TextAndIcon</property>
+                <property name="Icon">stock:gtk-floppy Menu</property>
+                <property name="Label" translatable="yes">Speichern</property>
+                <property name="UseUnderline">True</property>
+                <signal name="Clicked" handler="OnSaveButtonClicked" />
+              </widget>
+              <packing>
                 <property name="AutoSize">False</property>
                 <property name="YOptions">Fill</property>
                 <property name="XExpand">True</property>
@@ -1837,6 +1846,7 @@ Sonntag</property>
                         <property name="MemberName" />
                         <property name="IsTextCombo">True</property>
                         <property name="Items" translatable="yes" />
+                        <signal name="Changed" handler="OnAreaComboboxChanged" />
                       </widget>
                       <packing>
                         <property name="LeftAttach">1</property>
@@ -1952,7 +1962,7 @@ Sonntag</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="Gtk.ComboBox" id="timeCombobox">
+                      <widget class="Gtk.ComboBox" id="timesCombobox">
                         <property name="MemberName" />
                         <property name="IsTextCombo">True</property>
                         <property name="Items" translatable="yes" />
@@ -2051,15 +2061,15 @@ Sonntag</property>
               </packing>
             </child>
             <child>
-              <widget class="Gtk.ToggleButton" id="editButton">
+              <widget class="Gtk.ToggleButton" id="editToggleButton">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Type">TextAndIcon</property>
                 <property name="Icon">stock:gtk-edit Menu</property>
                 <property name="Label" translatable="yes">Bearbeiten</property>
                 <property name="UseUnderline">True</property>
-                <signal name="Clicked" handler="OnEditButtonClicked" />
-                <signal name="Activated" handler="OnEditButtonActivated" />
+                <property name="Active">True</property>
+                <signal name="Activated" handler="OnEditToggleButtonActivated" />
               </widget>
               <packing>
                 <property name="Position">1</property>
