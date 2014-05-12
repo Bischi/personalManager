@@ -31,45 +31,46 @@ namespace WidgetLibrary
 		}
 
 
-//		public override List<string[]> readPersons (short projID) // Personen für ListView auslesen
-//		{
-//			try {
-//				
-//				sqlite_cmd = sqlite_conn.CreateCommand ();
-//				
-//				sqlite_cmd.CommandText = "SELECT startdate, enddate, description, hourprice FROM tbl_projects WHERE (id ="+Pid+" AND name='"+Pname+"')";
-//				
-//				datareader = sqlite_cmd.ExecuteReader ();
-//				
-//				string readstartdate = ""; 
-//				string readenddate = ""; 
-//				string readDescript = ""; 
-//				int readhourprice = 0; 
-//				
-//				List<string> projDetails = new List<string>();
-//				
-//				while (datareader.Read())
-//				{
-//					readstartdate = datareader.GetString(0); 
-//					readenddate = datareader.GetString(1);
-//					readDescript = datareader.GetString(2);
-//					readhourprice = datareader.GetInt16(3);
-//				}
-//				sqlite_conn.Close ();
-//				
-//				projDetails.Add(Convert.ToString (readstartdate));
-//				projDetails.Add (Convert.ToString(readenddate));
-//				projDetails.Add (readDescript);
-//				projDetails.Add (Convert.ToString (readhourprice));
-//				
-//				return projDetails;
-//			}  
-//			catch (Exception ex) 
-//			{
-//				sqlite_conn.Close ();
-//				return null; 
-//			}
-//		}
+		public override List<string[]> readWorker () // Personen für ListView auslesen
+		{
+			try {
+				
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				
+				sqlite_cmd.CommandText = "SELECT w.*, tbl_timedetail.name, tbl_area.name, tbl_task.name, tbl_typ.name FROM tbl_time t INNER JOIN tbl_worker w ON t.fk_worker = w.id LEFT JOIN tbl_workplace wp ON t.fk_workplace = wp.id LEFT JOIN tbl_area ON wp.fk_area = tbl_area.id LEFT JOIN tbl_task ON wp.fk_task = tbl_task.id LEFT JOIN tbl_typ ON wp.fk_typ = tbl_typ.id LEFT JOIN tbl_timedetail ON t.fk_timedetail = tbl_timedetail.id;";
+				
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				string readstartdate = ""; 
+				string readname = "";
+				string readenddate = ""; 
+				string readDescript = ""; 
+				int readhourprice = 0; 
+
+				string[] personArr = new string[14];
+				int i = 0;
+//				List<string[]> persons = new List<string>();
+
+				while (datareader.Read())
+				{
+					personArr[i] = datareader.GetString (0);
+
+				}
+				sqlite_conn.Close ();
+				
+//				persons.Add(Convert.ToString (readstartdate));
+//				persons.Add (Convert.ToString(readenddate));
+//				persons.Add (readDescript);
+//				persons.Add (Convert.ToString (readhourprice));
+				
+				return null;
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return null; 
+			}
+		}
 
 		public override List<string> readAreas ()
 		{
@@ -196,7 +197,7 @@ namespace WidgetLibrary
 				
 				sqlite_cmd = sqlite_conn.CreateCommand ();
 				
-				sqlite_cmd.CommandText = "SELECT name FROM tbl_time";
+				sqlite_cmd.CommandText = "SELECT name FROM tbl_timedetail";
 				
 				sqlite_conn.Open ();
 				
@@ -220,43 +221,40 @@ namespace WidgetLibrary
 			}
 		}
 
-		public override bool addWorker (string fname, string lname, string village, string hnr, Int32 plz, string email, string mobile, string telephone, string street)
+
+		public override bool addWorker (string fname, string lname, string village, string hnr, int plz, string email, string mobile, string tel, string street)
 		{
 			try 
 			{
 				sqlite_cmd = sqlite_conn.CreateCommand ();
-				sqlite_cmd.CommandText = "INSERT INTO tbl_worker (fname, lname, hnr, PLZ, village, email, mobile, telephone, street) VALUES ('"+fname+"', '"+lname+"','"+hnr+"','"+plz+"','"+village+"','"+email+"','"+mobile+"','"+telephone+"')";
+				sqlite_cmd.CommandText = "INSERT INTO tbl_worker (fname, lname, hnr, PLZ, village, email, mobile, telephone, street) VALUES ('"+fname+"', '"+lname+"','"+hnr+"','"+plz+"','"+village+"','"+email+"','"+mobile+"','"+tel+"','"+street+"')";
 				sqlite_conn.Open(); 
 				sqlite_cmd.ExecuteNonQuery();
 				sqlite_conn.Close();
-
-				int WorkerID = this.readWorkerID(fname, lname, village, hnr, plz, email, mobile, telephone, street);
-
+				
+				int WorkerID = this.readWorkerID(fname,lname,village,hnr,email);
+				
 				if(WorkerID != 0)
 				{
-
+					return true;
 				}
-
-
-
-
-				return true;
+				else
+				{
+					return false;
+				}
 			} 
 			catch (Exception ex) 
 			{
-				sqlite_conn.Close ();
+				sqlite_conn.Close ();				
 				return false;
 			}
-
-
 		}
 
-		#region Add Worker
-		private int readWorkerID(string fname, string lname, string village, string hnr, Int32 plz, string email, string mobile, string telephone, string street)
+		public override int readWorkerID (string fname, string lname, string village, string hnr, string email)
 		{
 			try {
 				sqlite_cmd = sqlite_conn.CreateCommand ();
-				sqlite_cmd.CommandText = "SELECT id FROM tbl_worker WHERE fname= '"+fname+"' AND lname= '"+lname+"'AND village= '"+village+"' AND hnr= '"+hnr+"' AND plz= '"+plz+"' AND email= '"+email+"' AND mobile= '"+mobile+"' AND telephone= '"+telephone+"' AND street= '"+street+"'";
+				sqlite_cmd.CommandText = "SELECT id FROM tbl_worker WHERE fname= '"+fname+"' AND lname= '"+lname+"'AND village= '"+village+"' AND hnr= '"+hnr+"' AND email= '"+email+"'";
 				sqlite_conn.Open ();
 				datareader = sqlite_cmd.ExecuteReader ();
 				
@@ -328,7 +326,7 @@ namespace WidgetLibrary
 		{
 			try {
 				sqlite_cmd = sqlite_conn.CreateCommand ();
-				sqlite_cmd.CommandText = "SELECT id FROM tbl_workplace WHERE fk_area ='"+fk_area+"', fk_task = '"+fk_task+"', fk_typ = '"+fk_typ+"'";
+				sqlite_cmd.CommandText = "SELECT id FROM tbl_workplace WHERE fk_area = "+fk_area+" AND fk_task = "+fk_task+" AND fk_typ = "+fk_typ+"";
 				sqlite_conn.Open ();
 				datareader = sqlite_cmd.ExecuteReader ();
 				
@@ -372,12 +370,96 @@ namespace WidgetLibrary
 			}
 		}
 
-		public override bool addToTime (int id, int fk_worker, int fk_workplace)
+		public override int readTimeDetailID (string name)
 		{
-			throw new System.NotImplementedException ();
+			try {
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "SELECT id FROM tbl_timedetail WHERE name ='"+name+"'";
+				sqlite_conn.Open ();
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				int readID = 0;
+				
+				while (datareader.Read())
+				{
+					readID = datareader.GetInt16(0);
+				}
+				sqlite_conn.Close ();
+				return readID; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return 0; 
+			}
 		}
 
-		#endregion
+		public override bool addToTime (int fk_worker, int fk_workplace, int fk_timedetail)
+		{
+			try 
+			{
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "INSERT INTO tbl_time (fk_worker, fk_workplace, fk_timedetail) VALUES ('"+fk_worker+"','"+fk_workplace+"','"+fk_timedetail+"')";
+				sqlite_conn.Open(); 
+				sqlite_cmd.ExecuteNonQuery();
+				sqlite_conn.Close();
+				
+				return true;
+			} 
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();				
+				return false;
+			}
+		}
+
+//		public override List<string[]> readWorker ()
+//		{
+//			try {
+//				
+//				sqlite_cmd = sqlite_conn.CreateCommand ();
+//				
+//				sqlite_cmd.CommandText = "SELECT * FROM tbl_worker";
+//				
+//				sqlite_conn.Open ();
+//				
+//				datareader = sqlite_cmd.ExecuteReader ();
+//			
+//				List<string> worker = new List<string>(); // To Save typs and return them
+//				
+//				while (datareader.Read())
+//				{
+//					string readName = datareader.GetString(0);
+//					string readLName = datareader.GetString(1);
+//					string readhnr = datareader.GetString(2);
+//					int readPlz = datareader.GetInt16(3);
+//					string readVillage = datareader.GetString(4);
+//					string readEmail = datareader.GetString(5);
+//					string readMobile = datareader.GetString(6);
+//					string readTel = datareader.GetString(7);
+//					string readStreet = datareader.GetString(8);
+//
+//					worker.Add (readName);
+//					worker.Add (readLName);
+//					worker.Add (readhnr);
+//					worker.Add (Convert.ToString(readPlz));
+//					worker.Add (readVillage);
+//					worker.Add (readEmail);
+//					worker.Add (readTel);
+//					worker.Add (readStreet);
+//
+//				}
+//				sqlite_conn.Close ();
+//
+//				return worker; 
+//			}  
+//			catch (Exception ex) 
+//			{
+//				sqlite_conn.Close ();
+//				return null; 
+//			}
+//		}
+
 /*
 
 
