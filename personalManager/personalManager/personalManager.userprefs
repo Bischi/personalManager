@@ -1,0 +1,16 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../WidgetLibrary/SQLiteConnection.cs">
+    <Files>
+      <File FileName="../WidgetLibrary/SQLiteConnection.cs" Line="327" Column="40" />
+      <File FileName="../WidgetLibrary/DBConnector.cs" Line="37" Column="86" />
+      <File FileName="../WidgetLibrary/WorkerWidget.cs" Line="74" Column="48" />
+      <File FileName="../WidgetLibrary/gtk-gui/WidgetLibrary.SelectWidget.cs" Line="11" Column="11" />
+      <File FileName="../WidgetLibrary/SelectWidget.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

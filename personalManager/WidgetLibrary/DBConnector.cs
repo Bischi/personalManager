@@ -34,7 +34,7 @@ namespace WidgetLibrary
 		public abstract List<string> readTime();
 
 		public abstract bool addWorker (String fname, String lname, String village, String hnr, Int32 plz, String email, String mobile, String telephone, String street);
-		public abstract int readWorkerID (string fname, string lname, string village, string hnr, string email);
+		public abstract int readWorkerID (string fname, string lname, string village, Int16 hnr, string email);
 
 		public abstract int readWorkplaceID(int fk_area, int fk_task, int fk_typ);
 		public abstract bool addToTime(int id, int fk_worker, int fk_workplace);

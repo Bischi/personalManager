@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "personalManager", "personalManager.csproj", "{FC46908A-D8DE-49D0-864C-0FAEE3F4DF60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WidgetLibrary", "..\WidgetLibrary\WidgetLibrary.csproj", "{0B4CD9D4-DFEF-4B3E-88D8-A77224AE2662}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B4CD9D4-DFEF-4B3E-88D8-A77224AE2662}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0B4CD9D4-DFEF-4B3E-88D8-A77224AE2662}.Debug|x86.Build.0 = Debug|Any CPU
+		{0B4CD9D4-DFEF-4B3E-88D8-A77224AE2662}.Release|x86.ActiveCfg = Release|Any CPU
+		{0B4CD9D4-DFEF-4B3E-88D8-A77224AE2662}.Release|x86.Build.0 = Release|Any CPU
+		{FC46908A-D8DE-49D0-864C-0FAEE3F4DF60}.Debug|x86.ActiveCfg = Debug|x86
+		{FC46908A-D8DE-49D0-864C-0FAEE3F4DF60}.Debug|x86.Build.0 = Debug|x86
+		{FC46908A-D8DE-49D0-864C-0FAEE3F4DF60}.Release|x86.ActiveCfg = Release|x86
+		{FC46908A-D8DE-49D0-864C-0FAEE3F4DF60}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = personalManager.csproj
+	EndGlobalSection
+EndGlobal
