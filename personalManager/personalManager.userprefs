@@ -1,13 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WidgetLibrary/WorkerWidget.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WidgetLibrary/SQLiteConnection.cs">
     <Files>
       <File FileName="personalManager/Main.cs" Line="15" Column="3" />
       <File FileName="personalManager/MainWindow.cs" Line="21" Column="21" />
-      <File FileName="WidgetLibrary/SQLiteConnection.cs" Line="10" Column="15" />
+      <File FileName="WidgetLibrary/SQLiteConnection.cs" Line="14" Column="31" />
       <File FileName="WidgetLibrary/DBConnector.cs" Line="47" Column="8" />
       <File FileName="WidgetLibrary/TimesWidget.cs" Line="91" Column="1" />
-      <File FileName="WidgetLibrary/WorkerWidget.cs" Line="78" Column="12" />
+      <File FileName="WidgetLibrary/WorkerWidget.cs" Line="86" Column="23" />
       <File FileName="WidgetLibrary/PersonWidget.cs" Line="250" Column="49" />
       <File FileName="WidgetLibrary/SelectWidget.cs" Line="24" Column="1" />
     </Files>
@@ -16,7 +16,7 @@
         <State expanded="True">
           <Node name="personalManager" expanded="True" />
           <Node name="WidgetLibrary" expanded="True">
-            <Node name="WorkerWidget.cs" selected="True" />
+            <Node name="SQLiteConnection.cs" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -28,7 +28,6 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/home/bischof/Dokumente/MV_Thueringerberg/Bezirksmusikfest/Software/personalManager/personalManager/WidgetLibrary/SQLiteConnection.cs" line="1189" />
-      <Breakpoint file="/home/bischof/Documents/MV_Thueringerberg/Bezirksmusikfest/Software/personalManager/personalManager/WidgetLibrary/WorkerWidget.cs" line="66" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

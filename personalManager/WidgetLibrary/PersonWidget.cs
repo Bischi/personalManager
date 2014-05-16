@@ -150,8 +150,13 @@ namespace WidgetLibrary
 				workerListStore.AppendValues (s[0], s[1], s[2], s[3], s[4],s[5], s[6], s[7], s[8], s[9], s[10]);
 			}
 			
+
+			workerListStore.AppendValues ("Martin", "Bischof", "Wein", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
+			workerListStore.AppendValues ("Andreas", "Stark", "Abteilung", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
 			
+		
 			
+
 //			// Assign the model to the TreeView
 
 			personalTreeView.Model = workerListStore;

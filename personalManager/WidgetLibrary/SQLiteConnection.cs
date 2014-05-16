@@ -36,7 +36,7 @@ namespace WidgetLibrary
 			try {
 				
 				sqlite_cmd = sqlite_conn.CreateCommand ();
-				
+
 				sqlite_cmd.CommandText = "SELECT w.fname, w.lname, tbl_area.name, tbl_task.name, tbl_typ.name, tbl_timedetail.name, tbl_timedetail.starttime, tbl_timedetail.endtime, w.email, w.mobile, w.telephone, w.village  FROM tbl_time t INNER JOIN tbl_worker w ON t.fk_worker = w.id LEFT JOIN tbl_workplace wp ON t.fk_workplace = wp.id LEFT JOIN tbl_area ON wp.fk_area = tbl_area.id LEFT JOIN tbl_task ON wp.fk_task = tbl_task.id LEFT JOIN tbl_typ ON wp.fk_typ = tbl_typ.id LEFT JOIN tbl_timedetail ON t.fk_timedetail = tbl_timedetail.id;";
 				
 				datareader = sqlite_cmd.ExecuteReader ();
@@ -57,6 +57,35 @@ namespace WidgetLibrary
 				sqlite_conn.Close ();
 				
 				return persons;
+
+				sqlite_cmd.CommandText = "SELECT w.*, tbl_timedetail.name, tbl_area.name, tbl_task.name, tbl_typ.name FROM tbl_time t INNER JOIN tbl_worker w ON t.fk_worker = w.id LEFT JOIN tbl_workplace wp ON t.fk_workplace = wp.id LEFT JOIN tbl_area ON wp.fk_area = tbl_area.id LEFT JOIN tbl_task ON wp.fk_task = tbl_task.id LEFT JOIN tbl_typ ON wp.fk_typ = tbl_typ.id LEFT JOIN tbl_timedetail ON t.fk_timedetail = tbl_timedetail.id;";
+				
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				string readstartdate = ""; 
+				string readname = "";
+				string readenddate = ""; 
+				string readDescript = ""; 
+				int readhourprice = 0; 
+
+				string[] personArr = new string[14];
+				int i = 0;
+//				List<string[]> persons = new List<string>();
+
+				while (datareader.Read())
+				{
+					personArr[i] = datareader.GetString (0);
+
+				}
+				sqlite_conn.Close ();
+				
+//				persons.Add(Convert.ToString (readstartdate));
+//				persons.Add (Convert.ToString(readenddate));
+//				persons.Add (readDescript);
+//				persons.Add (Convert.ToString (readhourprice));
+				
+				return null;
+
 			}  
 			catch (Exception ex) 
 			{
