@@ -26,9 +26,9 @@ namespace WidgetLibrary
 		private global::Gtk.Label label5;
 		private global::Gtk.Entry nameEntry;
 		private global::Gtk.Table table3;
-		private global::Gtk.Button saveButton;
 		private global::Gtk.Button backButton;
 		private global::Gtk.ToggleButton editTogglebutton;
+		private global::Gtk.Button saveButton;
 		
 		protected virtual void Build ()
 		{
@@ -82,6 +82,7 @@ namespace WidgetLibrary
 			this.dayCombobox.AppendText (global::Mono.Unix.Catalog.GetString ("Freitag"));
 			this.dayCombobox.AppendText (global::Mono.Unix.Catalog.GetString ("Samstag"));
 			this.dayCombobox.AppendText (global::Mono.Unix.Catalog.GetString ("Sonntag"));
+			this.dayCombobox.AppendText ("");
 			this.dayCombobox.Name = "dayCombobox";
 			this.table1.Add (this.dayCombobox);
 			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table1 [this.dayCombobox]));
@@ -266,80 +267,80 @@ namespace WidgetLibrary
 			this.table3.RowSpacing = ((uint)(6));
 			this.table3.ColumnSpacing = ((uint)(6));
 			// Container child table3.Gtk.Table+TableChild
-			this.saveButton = new global::Gtk.Button ();
-			this.saveButton.CanFocus = true;
-			this.saveButton.Name = "button560";
-			this.saveButton.UseUnderline = true;
-			// Container child button560.Gtk.Container+ContainerChild
+			this.backButton = new global::Gtk.Button ();
+			this.backButton.CanFocus = true;
+			this.backButton.Name = "backButton";
+			this.backButton.UseUnderline = true;
+			// Container child backButton.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w21 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w22 = new global::Gtk.HBox ();
 			w22.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Image w23 = new global::Gtk.Image ();
-			w23.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-floppy", global::Gtk.IconSize.Menu);
+			w23.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-ok", global::Gtk.IconSize.Menu);
 			w22.Add (w23);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Label w25 = new global::Gtk.Label ();
-			w25.LabelProp = global::Mono.Unix.Catalog.GetString ("Speichern");
+			w25.LabelProp = global::Mono.Unix.Catalog.GetString ("Zurück");
 			w25.UseUnderline = true;
 			w22.Add (w25);
 			w21.Add (w22);
-			this.saveButton.Add (w21);
-			this.table3.Add (this.saveButton);
-			global::Gtk.Table.TableChild w29 = ((global::Gtk.Table.TableChild)(this.table3 [this.saveButton]));
-			w29.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table3.Gtk.Table+TableChild
-			this.backButton = new global::Gtk.Button ();
-			this.backButton.CanFocus = true;
-			this.backButton.Name = "button561";
-			this.backButton.UseUnderline = true;
-			// Container child button561.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w30 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
-			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w31 = new global::Gtk.HBox ();
-			w31.Spacing = 2;
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w32 = new global::Gtk.Image ();
-			w32.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-ok", global::Gtk.IconSize.Menu);
-			w31.Add (w32);
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w34 = new global::Gtk.Label ();
-			w34.LabelProp = global::Mono.Unix.Catalog.GetString ("Zurück");
-			w34.UseUnderline = true;
-			w31.Add (w34);
-			w30.Add (w31);
-			this.backButton.Add (w30);
+			this.backButton.Add (w21);
 			this.table3.Add (this.backButton);
-			global::Gtk.Table.TableChild w38 = ((global::Gtk.Table.TableChild)(this.table3 [this.backButton]));
-			w38.LeftAttach = ((uint)(2));
-			w38.RightAttach = ((uint)(3));
-			w38.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w29 = ((global::Gtk.Table.TableChild)(this.table3 [this.backButton]));
+			w29.LeftAttach = ((uint)(2));
+			w29.RightAttach = ((uint)(3));
+			w29.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
 			this.editTogglebutton = new global::Gtk.ToggleButton ();
 			this.editTogglebutton.CanFocus = true;
 			this.editTogglebutton.Name = "editTogglebutton";
 			this.editTogglebutton.UseUnderline = true;
 			// Container child editTogglebutton.Gtk.Container+ContainerChild
+			global::Gtk.Alignment w30 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
+			// Container child GtkAlignment.Gtk.Container+ContainerChild
+			global::Gtk.HBox w31 = new global::Gtk.HBox ();
+			w31.Spacing = 2;
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Image w32 = new global::Gtk.Image ();
+			w32.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-edit", global::Gtk.IconSize.Menu);
+			w31.Add (w32);
+			// Container child GtkHBox.Gtk.Container+ContainerChild
+			global::Gtk.Label w34 = new global::Gtk.Label ();
+			w34.LabelProp = global::Mono.Unix.Catalog.GetString ("Bearbeiten");
+			w34.UseUnderline = true;
+			w31.Add (w34);
+			w30.Add (w31);
+			this.editTogglebutton.Add (w30);
+			this.table3.Add (this.editTogglebutton);
+			global::Gtk.Table.TableChild w38 = ((global::Gtk.Table.TableChild)(this.table3 [this.editTogglebutton]));
+			w38.LeftAttach = ((uint)(1));
+			w38.RightAttach = ((uint)(2));
+			w38.YOptions = ((global::Gtk.AttachOptions)(4));
+			// Container child table3.Gtk.Table+TableChild
+			this.saveButton = new global::Gtk.Button ();
+			this.saveButton.CanFocus = true;
+			this.saveButton.Name = "saveButton";
+			this.saveButton.UseUnderline = true;
+			// Container child saveButton.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w39 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w40 = new global::Gtk.HBox ();
 			w40.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Image w41 = new global::Gtk.Image ();
-			w41.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-edit", global::Gtk.IconSize.Menu);
+			w41.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-floppy", global::Gtk.IconSize.Menu);
 			w40.Add (w41);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Label w43 = new global::Gtk.Label ();
-			w43.LabelProp = global::Mono.Unix.Catalog.GetString ("Bearbeiten");
+			w43.LabelProp = global::Mono.Unix.Catalog.GetString ("Speichern");
 			w43.UseUnderline = true;
 			w40.Add (w43);
 			w39.Add (w40);
-			this.editTogglebutton.Add (w39);
-			this.table3.Add (this.editTogglebutton);
-			global::Gtk.Table.TableChild w47 = ((global::Gtk.Table.TableChild)(this.table3 [this.editTogglebutton]));
-			w47.LeftAttach = ((uint)(1));
-			w47.RightAttach = ((uint)(2));
+			this.saveButton.Add (w39);
+			this.table3.Add (this.saveButton);
+			global::Gtk.Table.TableChild w47 = ((global::Gtk.Table.TableChild)(this.table3 [this.saveButton]));
 			w47.YOptions = ((global::Gtk.AttachOptions)(4));
 			this.vbox1.Add (this.table3);
 			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.table3]));
@@ -350,6 +351,10 @@ namespace WidgetLibrary
 				this.Child.ShowAll ();
 			}
 			this.Show ();
+			this.dayCombobox.Changed += new global::System.EventHandler (this.OnDayComboboxChanged);
+			this.saveButton.Clicked += new global::System.EventHandler (this.OnSaveButtonClicked);
+			this.editTogglebutton.Clicked += new global::System.EventHandler (this.OnEditTogglebuttonClicked);
+			this.backButton.Clicked += new global::System.EventHandler (this.OnBackButtonClicked);
 		}
 	}
 }

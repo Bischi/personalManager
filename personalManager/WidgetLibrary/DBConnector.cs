@@ -25,23 +25,25 @@ namespace WidgetLibrary
 //
 
 
-//		public abstract List<String[]> readPersons(Int16 projID);
+		public abstract List<String[]> readWorker();
 		public abstract List<string> readAreas();
 		public abstract List<string> readTyp();
-//		public abstract List<String[]> readTasks(int areaID); // AUfgaben auslesen
 		public abstract int readAreaID(String area);
 		public abstract List<string> readTasks(int areaID);
 		public abstract List<string> readTime();
 
-		public abstract bool addWorker (String fname, String lname, String village, String hnr, Int32 plz, String email, String mobile, String telephone, String street);
+		public abstract bool addWorker (String fname, String lname, String village, String hnr, Int32 plz, String email, String mobile, String tel, String street);
 		public abstract int readWorkerID (string fname, string lname, string village, string hnr, string email);
 
 		public abstract int readWorkplaceID(int fk_area, int fk_task, int fk_typ);
-		public abstract bool addToTime(int id, int fk_worker, int fk_workplace);
+		public abstract bool addToTime(int fk_worker, int fk_workplace, int fk_timedetail);
 
 		public abstract int readTaskID(string name);
 		public abstract int readTypID(string name);
 
 		public abstract int readTimeID(string name);
+		public abstract int readTimeDetailID (string name);
+
+//		public abstract bool editWorker(string fname, string lname, string email, string village);
 	}
 }

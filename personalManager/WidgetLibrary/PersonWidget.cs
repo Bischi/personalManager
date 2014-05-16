@@ -28,7 +28,7 @@ namespace WidgetLibrary
 
 		Gtk.TreeModelFilter filter;
 
-		Gtk.ListStore stempsListStore = new Gtk.ListStore (typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string));
+		Gtk.ListStore workerListStore = new Gtk.ListStore (typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string), typeof (string));
 
 
 		public PersonWidget ()
@@ -140,21 +140,21 @@ namespace WidgetLibrary
 
 			
 			// Add some data to the store
-			stempsListStore.AppendValues ("Martin", "Bischof", "Wein", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
-			stempsListStore.AppendValues ("Andreas", "Stark", "Abteilung", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
+//			workerListStore.AppendValues ("Martin", "Bischof", "Wein", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
+//			workerListStore.AppendValues ("Andreas", "Stark", "Abteilung", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
 			
 			
-//			List<String[]> stempsDetail = MainClass.connection.readStemps(1); // PARAMETER neu einfügen!
-//			
-//			foreach (string[] s in stempsDetail) {
-//				stempsListStore.AppendValues (s[0], s[1], s[2], s[3], s[4]);
-//			}
-//			
-//			
-//			
+			List<String[]> workerList = SelectWidget.connection.readWorker(); // PARAMETER neu einfügen!
+			
+			foreach (string[] s in workerList) {
+				workerListStore.AppendValues (s[0], s[1], s[2], s[3], s[4],s[5], s[6], s[7], s[8], s[9], s[10]);
+			}
+			
+			
+			
 //			// Assign the model to the TreeView
 
-			personalTreeView.Model = stempsListStore;
+			personalTreeView.Model = workerListStore;
 
 
 			
@@ -162,7 +162,7 @@ namespace WidgetLibrary
 			// which sits between the Model (the ListStore) and the View (the TreeView) filtering what the model sees.
 			// Some may say that this is a "Controller", even though the name and usage suggests that it is still part of
 			// the Model.
-			filter = new Gtk.TreeModelFilter (stempsListStore, null);
+			filter = new Gtk.TreeModelFilter (workerListStore, null);
 			
 			// Specify the function that determines which rows to filter out and which ones to display
 			filter.VisibleFunc = new Gtk.TreeModelFilterVisibleFunc (FilterTree);
