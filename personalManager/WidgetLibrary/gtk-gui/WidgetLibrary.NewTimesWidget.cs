@@ -82,6 +82,7 @@ namespace WidgetLibrary
 			this.dayCombobox.AppendText (global::Mono.Unix.Catalog.GetString ("Freitag"));
 			this.dayCombobox.AppendText (global::Mono.Unix.Catalog.GetString ("Samstag"));
 			this.dayCombobox.AppendText (global::Mono.Unix.Catalog.GetString ("Sonntag"));
+			this.dayCombobox.AppendText ("");
 			this.dayCombobox.Name = "dayCombobox";
 			this.table1.Add (this.dayCombobox);
 			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table1 [this.dayCombobox]));
@@ -350,6 +351,7 @@ namespace WidgetLibrary
 				this.Child.ShowAll ();
 			}
 			this.Show ();
+			this.dayCombobox.Changed += new global::System.EventHandler (this.OnDayComboboxChanged);
 			this.saveButton.Clicked += new global::System.EventHandler (this.OnSaveButtonClicked);
 			this.editTogglebutton.Clicked += new global::System.EventHandler (this.OnEditTogglebuttonClicked);
 			this.backButton.Clicked += new global::System.EventHandler (this.OnBackButtonClicked);

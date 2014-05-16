@@ -12,6 +12,7 @@ namespace WidgetLibrary
 		public WorkerWidget ()
 		{
 			this.Build ();
+
 			editToggleButton.Visible = false;
 
 			#region areaComboBox - Fill areas
@@ -26,7 +27,7 @@ namespace WidgetLibrary
 			ls.AppendValues ("");
 			#endregion
 			
-				#region typComboBox - Fill Typ
+			#region typComboBox - Fill Typ
 			List<String> typList = SelectWidget.connection.readTyp();
 			ListStore typLS = new ListStore(typeof(string));
 			typCombobox.Model = typLS;
@@ -50,8 +51,6 @@ namespace WidgetLibrary
 				
 				taskLS.AppendValues("");
 			}
-			
-				
 			#endregion
 			
 			#region timesComboBox - Fill Times
@@ -61,42 +60,63 @@ namespace WidgetLibrary
 			
 			foreach(string s in timeList)
 				timeLS.AppendValues(s);
-			
-			timeLS.AppendValues("");
 			#endregion
-
 		}
 
 		protected void OnSaveButtonClicked (object sender, EventArgs e)
 		{
+			try
+			{
+				Convert.ToInt32 (plzEntry.Text);
+			}
+			catch (Exception ex)  
+			{
+				MessageDialog md = new MessageDialog(null, DialogFlags.DestroyWithParent, MessageType.Error, ButtonsType.Ok, "Nur Zahlen sind als PLZ gültig!");
+				md.Run();
+				md.Destroy();
+				return;
+			}
+
+
 			if (checkTextBoxValue() == true) {
+			
 				bool addOK = SelectWidget.connection.addWorker (fnameEntry.Text, lnameEntry.Text, villageEntry.Text, hnrEntry.Text, Convert.ToInt32 (plzEntry.Text), emailEntry.Text, mobileEntry.Text, telEntry.Text, streetEntry.Text);
 				int readWorkerID = SelectWidget.connection.readWorkerID (fnameEntry.Text, lnameEntry.Text, villageEntry.Text, hnrEntry.Text, emailEntry.Text);
 				int readAreaID = SelectWidget.connection.readAreaID(areaCombobox.ActiveText);
 				int readTaskID = SelectWidget.connection.readTaskID(taskCombobox.ActiveText);
 				int readTypID = SelectWidget.connection.readTypID(typCombobox.ActiveText);
+				int readWorkplaceID = SelectWidget.connection.readWorkplaceID(readAreaID, readTaskID, readTypID); 
+				int readTimeDetailID = SelectWidget.connection.readTimeDetailID(timesCombobox.ActiveText);
 
-				int readWorkplaceID; 
-				bool addToTimes;
-
-				if(addOK = true)
+				if(addOK == true && readWorkerID != 0 && readAreaID != 0 && readTypID != 0 && readWorkplaceID != 0 && readTimeDetailID != 0)
 				{
-					fnameEntry.Text = "";
-					lnameEntry.Text = "";
-					emailEntry.Text = "";
-					mobileEntry.Text = "";
-					telEntry.Text = "";
-					plzEntry.Text = "";
-					villageEntry.Text = "";
-					streetEntry.Text = "";
-					hnrEntry.Text = "";
-					
-					areaCombobox.Clear ();
-					taskCombobox.Clear ();
-					typCombobox.Clear ();
-					timesCombobox.Clear ();
+					bool addToTimes = SelectWidget.connection.addToTime(readWorkerID, readWorkplaceID, readTimeDetailID);
 
-					MessageDialog md = new MessageDialog(null, DialogFlags.DestroyWithParent, MessageType.Info, ButtonsType.Ok, "Person wurde hinzugefügt!");
+					if(addToTimes = true)
+					{
+						fnameEntry.Text = "";
+						lnameEntry.Text = "";
+						emailEntry.Text = "";
+						mobileEntry.Text = "";
+						telEntry.Text = "";
+						plzEntry.Text = "";
+						villageEntry.Text = "";
+						streetEntry.Text = "";
+						hnrEntry.Text = "";
+						
+						areaCombobox.Clear ();
+						taskCombobox.Clear ();
+						typCombobox.Clear ();
+						timesCombobox.Clear ();
+						
+						MessageDialog md = new MessageDialog(null, DialogFlags.DestroyWithParent, MessageType.Info, ButtonsType.Ok, "Person wurde hinzugefügt!");
+						md.Run();
+						md.Destroy();
+					}
+				}
+				else
+				{
+					MessageDialog md = new MessageDialog(null, DialogFlags.DestroyWithParent, MessageType.Error, ButtonsType.Ok, "Person konnte nicht hinzugefügt werden.");
 					md.Run();
 					md.Destroy();
 				}

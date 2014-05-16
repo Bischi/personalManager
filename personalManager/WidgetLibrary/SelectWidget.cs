@@ -1,5 +1,6 @@
 using System;
 using Gtk;
+using System.Net.NetworkInformation;
 
 namespace WidgetLibrary
 {
@@ -17,7 +18,17 @@ namespace WidgetLibrary
 		public SelectWidget ()
 		{
 			this.Build ();
-			connection = new SQLiteConnection();
+
+			bool checkconnection = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable ();  
+
+			if (checkconnection == true)
+			{
+				// connection = MySqlConnection();
+			} else
+			{
+				connection = new SQLiteConnection();
+			}
+
 
 			pw = new PersonWidget();
 			tw = new TimesWidget();
