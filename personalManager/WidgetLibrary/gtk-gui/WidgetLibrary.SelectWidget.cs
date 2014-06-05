@@ -7,25 +7,21 @@ namespace WidgetLibrary {
 		private global::Gtk.Button planButton;
 		
 		private global::Gtk.VBox vbox6;
-		
-		private void image14;
+
 		
 		private global::Gtk.Label label9;
 		
 		private global::Gtk.Button personButton;
 		
 		private global::Gtk.VBox vbox5;
-		
-		private void image15;
+
 		
 		private global::Gtk.Label personsButtonLabel;
 		
 		private global::Gtk.Button timesButton;
 		
 		private global::Gtk.VBox vbox3;
-		
-		private void image12;
-		
+
 		private global::Gtk.Label timesButtonLabel;
 		
 		protected virtual void Build() {
@@ -49,11 +45,6 @@ namespace WidgetLibrary {
 			this.vbox6.Name = "vbox6";
 			this.vbox6.Spacing = 6;
 			// Container child vbox6.Gtk.Box+BoxChild
-			this.image14 = null;
-			this.vbox6.Add(this.image14);
-			global::Gtk.Box.BoxChild w1 = ((global::Gtk.Box.BoxChild)(this.vbox6[this.image14]));
-			w1.Position = 0;
-			// Container child vbox6.Gtk.Box+BoxChild
 			this.label9 = new global::Gtk.Label();
 			this.label9.Name = "label9";
 			this.label9.LabelProp = global::Mono.Unix.Catalog.GetString("Pläne");
@@ -75,11 +66,6 @@ namespace WidgetLibrary {
 			this.vbox5 = new global::Gtk.VBox();
 			this.vbox5.Name = "vbox5";
 			this.vbox5.Spacing = 6;
-			// Container child vbox5.Gtk.Box+BoxChild
-			this.image15 = null;
-			this.vbox5.Add(this.image15);
-			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox5[this.image15]));
-			w5.Position = 0;
 			// Container child vbox5.Gtk.Box+BoxChild
 			this.personsButtonLabel = new global::Gtk.Label();
 			this.personsButtonLabel.Name = "personsButtonLabel";
@@ -105,11 +91,7 @@ namespace WidgetLibrary {
 			this.vbox3 = new global::Gtk.VBox();
 			this.vbox3.Name = "vbox3";
 			this.vbox3.Spacing = 6;
-			// Container child vbox3.Gtk.Box+BoxChild
-			this.image12 = null;
-			this.vbox3.Add(this.image12);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox3[this.image12]));
-			w9.Position = 0;
+
 			// Container child vbox3.Gtk.Box+BoxChild
 			this.timesButtonLabel = new global::Gtk.Label();
 			this.timesButtonLabel.Name = "timesButtonLabel";
