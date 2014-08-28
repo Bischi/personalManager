@@ -30,11 +30,10 @@ namespace WidgetLibrary
 		public abstract List<string> readTyp();
 		public abstract int readAreaID(String area);
 		public abstract List<string> readTasks(int areaID);
-		public abstract List<string> readTime();
+		public abstract List<string> readTime(); //wird bei der Erstellung des Arbeiters und bei der Erstellung des  
 
 
-		public abstract bool addWorker (String fname, String lname, String village, String hnr, Int32 plz, String email, String mobile, String telephone, String street);
-		public abstract int readWorkerID (string fname, string lname, string village, Int16 hnr, string email);
+		//public abstract bool addWorker (String fname, String lname, String village, String hnr, Int32 plz, String email, String mobile, String telephone, String street);
 
 		public abstract bool addWorker (String fname, String lname, String village, String hnr, Int32 plz, String email, String mobile, String tel, String street);
 		public abstract int readWorkerID (string fname, string lname, string village, string hnr, string email);
@@ -44,9 +43,19 @@ namespace WidgetLibrary
 
 		public abstract int readTaskID(string name);
 		public abstract int readTypID(string name);
-
+		public abstract int readTimeDetailID (string name); //wird fuer das Hinzufuegen bei der Erstellung eines neuen Benutzers benoetigt, um die richtige Schicht in die tbl_time eintragen zu koennen
 		public abstract int readTimeID(string name);
-		public abstract int readTimeDetailID (string name);
+
+
+
+
+		//Schichten anlegen, bearbeiten, loeschen
+		public abstract List<String[]> readTimeDetails(); //wird fuer das Anzeigen im SChichten-fenster benoetigt, wenn sie bearbeitet werden
+		public abstract bool addTime(string name, string date, string starttime, string stoptime);
+		public abstract bool updateTime(int id, string name, string date, string starttime, string stoptime);
+		public abstract int checkOutTimedetailID(string name, string starttime);
+		public abstract bool deleteTime(string name, string date, string starttime, string stoptime);
+
 
 //		public abstract bool editWorker(string fname, string lname, string email, string village);
 	}

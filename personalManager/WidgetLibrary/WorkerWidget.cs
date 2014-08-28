@@ -13,7 +13,6 @@ namespace WidgetLibrary
 		{
 			this.Build ();
 
-			editToggleButton.Visible = false;
 
 			#region areaComboBox - Fill areas
 			
@@ -145,24 +144,6 @@ namespace WidgetLibrary
 		{
 			SelectWidget sw = (SelectWidget) this.Parent;
 			sw.ViewPersonWidget();
-		}
-
-		protected void OnEditToggleButtonActivated (object sender, EventArgs e) // EditToggleButton activated
-		{
-			fnameEntry.Sensitive = true;
-			lnameEntry.Sensitive = true;
-			emailEntry.Sensitive = true;
-			mobileEntry.Sensitive = true;
-			telEntry.Sensitive = true;
-			plzEntry.Sensitive = true;
-			villageEntry.Sensitive = true;
-			streetEntry.Sensitive = true;
-			hnrEntry.Sensitive = true;
-
-			areaCombobox.Sensitive = true;
-			taskCombobox.Sensitive = true;
-			typCombobox.Sensitive = true;
-			timesCombobox.Sensitive = true;
 		}
 
 		protected void OnAreaComboboxChanged (object sender, EventArgs e)

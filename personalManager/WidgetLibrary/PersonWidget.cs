@@ -43,7 +43,7 @@ namespace WidgetLibrary
 			PVHeaderLabel.ModifyFont (Pango.FontDescription.FromString ("Calibri, Bold 11"));
 			#endregion
 
-			    		#region TreeView füllen
+			#region TreeView füllen
 			// Create a column for the date name
 			Gtk.TreeViewColumn fnameColumn = new Gtk.TreeViewColumn ();
 			fnameColumn.Title = "Vorname";
@@ -151,8 +151,8 @@ namespace WidgetLibrary
 			}
 			
 
-			workerListStore.AppendValues ("Martin", "Bischof", "Wein", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
-			workerListStore.AppendValues ("Andreas", "Stark", "Abteilung", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
+//			workerListStore.AppendValues ("Martin", "Bischof", "Wein", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
+//			workerListStore.AppendValues ("Andreas", "Stark", "Abteilung", "Aufgabe", "Typ", "Schicht", "Startzeit", "Endzeit", "Email", "Mobile", "Telefon");
 			
 		
 			

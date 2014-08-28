@@ -61,6 +61,8 @@
     <Compile Include="TimesWidget.cs" />
     <Compile Include="WorkerWidget.cs" />
     <Compile Include="gtk-gui\WidgetLibrary.WorkerWidget.cs" />
+    <Compile Include="PlansWidget.cs" />
+    <Compile Include="gtk-gui\WidgetLibrary.PlansWidget.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

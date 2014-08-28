@@ -44,7 +44,6 @@ namespace WidgetLibrary
 		private global::Gtk.HSeparator hseparator1;
 		private global::Gtk.HButtonBox hbuttonbox1;
 		private global::Gtk.Button saveButton;
-		private global::Gtk.ToggleButton editToggleButton;
 		private global::Gtk.Button backButton;
 		
 		protected virtual void Build ()
@@ -480,63 +479,36 @@ namespace WidgetLibrary
 			w46.Expand = false;
 			w46.Fill = false;
 			// Container child hbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
-			this.editToggleButton = new global::Gtk.ToggleButton ();
-			this.editToggleButton.CanFocus = true;
-			this.editToggleButton.Name = "editToggleButton";
-			this.editToggleButton.UseUnderline = true;
-			this.editToggleButton.Active = true;
-			// Container child editToggleButton.Gtk.Container+ContainerChild
+			this.backButton = new global::Gtk.Button ();
+			this.backButton.CanFocus = true;
+			this.backButton.Name = "backButton";
+			this.backButton.UseUnderline = true;
+			// Container child backButton.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w47 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w48 = new global::Gtk.HBox ();
 			w48.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Image w49 = new global::Gtk.Image ();
-			w49.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-edit", global::Gtk.IconSize.Menu);
+			w49.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-ok", global::Gtk.IconSize.Menu);
 			w48.Add (w49);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Label w51 = new global::Gtk.Label ();
-			w51.LabelProp = global::Mono.Unix.Catalog.GetString ("Bearbeiten");
+			w51.LabelProp = global::Mono.Unix.Catalog.GetString ("Zurück");
 			w51.UseUnderline = true;
 			w48.Add (w51);
 			w47.Add (w48);
-			this.editToggleButton.Add (w47);
-			this.hbuttonbox1.Add (this.editToggleButton);
-			global::Gtk.ButtonBox.ButtonBoxChild w55 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox1 [this.editToggleButton]));
+			this.backButton.Add (w47);
+			this.hbuttonbox1.Add (this.backButton);
+			global::Gtk.ButtonBox.ButtonBoxChild w55 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox1 [this.backButton]));
 			w55.Position = 1;
 			w55.Expand = false;
 			w55.Fill = false;
-			// Container child hbuttonbox1.Gtk.ButtonBox+ButtonBoxChild
-			this.backButton = new global::Gtk.Button ();
-			this.backButton.CanFocus = true;
-			this.backButton.Name = "backButton";
-			this.backButton.UseUnderline = true;
-			// Container child backButton.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w56 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
-			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w57 = new global::Gtk.HBox ();
-			w57.Spacing = 2;
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w58 = new global::Gtk.Image ();
-			w58.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-ok", global::Gtk.IconSize.Menu);
-			w57.Add (w58);
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w60 = new global::Gtk.Label ();
-			w60.LabelProp = global::Mono.Unix.Catalog.GetString ("Zurück");
-			w60.UseUnderline = true;
-			w57.Add (w60);
-			w56.Add (w57);
-			this.backButton.Add (w56);
-			this.hbuttonbox1.Add (this.backButton);
-			global::Gtk.ButtonBox.ButtonBoxChild w64 = ((global::Gtk.ButtonBox.ButtonBoxChild)(this.hbuttonbox1 [this.backButton]));
-			w64.Position = 2;
-			w64.Expand = false;
-			w64.Fill = false;
 			this.vbox1.Add (this.hbuttonbox1);
-			global::Gtk.Box.BoxChild w65 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbuttonbox1]));
-			w65.Position = 2;
-			w65.Expand = false;
-			w65.Fill = false;
+			global::Gtk.Box.BoxChild w56 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbuttonbox1]));
+			w56.Position = 2;
+			w56.Expand = false;
+			w56.Fill = false;
 			this.Add (this.vbox1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
@@ -544,7 +516,6 @@ namespace WidgetLibrary
 			this.Show ();
 			this.areaCombobox.Changed += new global::System.EventHandler (this.OnAreaComboboxChanged);
 			this.saveButton.Clicked += new global::System.EventHandler (this.OnSaveButtonClicked);
-			this.editToggleButton.Activated += new global::System.EventHandler (this.OnEditToggleButtonActivated);
 			this.backButton.Clicked += new global::System.EventHandler (this.OnBackButtonClicked);
 		}
 	}

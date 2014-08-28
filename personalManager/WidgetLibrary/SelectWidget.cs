@@ -8,6 +8,7 @@ namespace WidgetLibrary
 	public partial class SelectWidget : Gtk.Bin
 	{
 		PersonWidget pw;
+
 		TimesWidget tw;
 		NewTimesWidget ntw; 
 		WorkerWidget ww;
@@ -21,7 +22,7 @@ namespace WidgetLibrary
 
 			bool checkconnection = System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable ();  
 
-			if (checkconnection == true)
+			if (checkconnection != true)
 			{
 				// connection = MySqlConnection();
 			} else
@@ -32,7 +33,7 @@ namespace WidgetLibrary
 
 			pw = new PersonWidget();
 			tw = new TimesWidget();
-			ntw = new NewTimesWidget();
+			ntw = new NewTimesWidget(false);
 			ww = new WorkerWidget();
 		}
 
@@ -68,9 +69,19 @@ namespace WidgetLibrary
 			}
 		}
 
-		protected void OnTimesButtonClicked (object sender, EventArgs e)
+		public void OnTimesButtonClicked (object sender, EventArgs e)
 		{
 			this.Remove(hbuttonbox3);
+			tw.SetSizeRequest(800, 500);
+			this.Add(tw);
+			if ((this.Child != null)) {
+				this.Child.ShowAll ();
+			}
+		}
+
+		public void ViewTimesWidget()
+		{
+			this.Remove(ntw);
 			tw.SetSizeRequest(750, 650);
 			this.Add(tw);
 			if ((this.Child != null)) {

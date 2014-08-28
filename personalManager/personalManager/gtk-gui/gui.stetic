@@ -24,7 +24,7 @@
       </source>
     </icon-set>
   </icon-factory>
-  <widget class="Gtk.Window" id="MainWindow" design-size="653 377">
+  <widget class="Gtk.Window" id="MainWindow" design-size="652 378">
     <action-group name="Default">
       <action id="PlneAction">
         <property name="Type">Action</property>
@@ -82,7 +82,6 @@
     <property name="MemberName" />
     <property name="ExtensionEvents">All</property>
     <property name="Title" translatable="yes">Home</property>
-    <property name="WindowPosition">CenterOnParent</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>
       <widget class="Gtk.VBox" id="vbox1">

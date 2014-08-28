@@ -2,14 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.Workbench ActiveDocument="WidgetLibrary/SQLiteConnection.cs">
     <Files>
-      <File FileName="personalManager/Main.cs" Line="15" Column="3" />
-      <File FileName="personalManager/MainWindow.cs" Line="21" Column="21" />
-      <File FileName="WidgetLibrary/SQLiteConnection.cs" Line="14" Column="31" />
-      <File FileName="WidgetLibrary/DBConnector.cs" Line="47" Column="8" />
-      <File FileName="WidgetLibrary/TimesWidget.cs" Line="91" Column="1" />
-      <File FileName="WidgetLibrary/WorkerWidget.cs" Line="86" Column="23" />
-      <File FileName="WidgetLibrary/PersonWidget.cs" Line="250" Column="49" />
-      <File FileName="WidgetLibrary/SelectWidget.cs" Line="24" Column="1" />
+      <File FileName="WidgetLibrary/SQLiteConnection.cs" Line="4" Column="23" />
+      <File FileName="WidgetLibrary/NewTimesWidget.cs" Line="111" Column="20" />
+      <File FileName="WidgetLibrary/DBConnector.cs" Line="53" Column="3" />
+      <File FileName="WidgetLibrary/SelectWidget.cs" Line="26" Column="5" />
+      <File FileName="WidgetLibrary/TimesWidget.cs" Line="126" Column="27" />
+      <File FileName="WidgetLibrary/PersonWidget.cs" Line="139" Column="28" />
+      <File FileName="personalManager/MainWindow.cs" Line="52" Column="1" />
+      <File FileName="WidgetLibrary/PlansWidget.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,6 +28,8 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/home/bischof/Dokumente/MV_Thueringerberg/Bezirksmusikfest/Software/personalManager/personalManager/WidgetLibrary/SQLiteConnection.cs" line="1189" />
+      <Breakpoint file="/home/bischof/Documents/MV_Thueringerberg/Bezirksmusikfest/Software/personalManager/personalManager/WidgetLibrary/WorkerWidget.cs" line="70" />
+      <Breakpoint file="/home/bischof/Documents/MV_Thueringerberg/Bezirksmusikfest/Software/personalManager/personalManager/WidgetLibrary/NewTimesWidget.cs" line="53" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

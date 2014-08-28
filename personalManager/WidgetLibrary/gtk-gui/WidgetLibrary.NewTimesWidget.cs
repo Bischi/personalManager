@@ -16,9 +16,9 @@ namespace WidgetLibrary
 		private global::Gtk.Label label11;
 		private global::Gtk.Entry StartMinuteEntry;
 		private global::Gtk.HBox hbox2;
-		private global::Gtk.Entry entry10;
+		private global::Gtk.Entry stopHourEntry;
 		private global::Gtk.Label label12;
-		private global::Gtk.Entry entry11;
+		private global::Gtk.Entry StopMinuteEntry;
 		private global::Gtk.Label label14;
 		private global::Gtk.Label label2;
 		private global::Gtk.Label label3;
@@ -27,7 +27,6 @@ namespace WidgetLibrary
 		private global::Gtk.Entry nameEntry;
 		private global::Gtk.Table table3;
 		private global::Gtk.Button backButton;
-		private global::Gtk.ToggleButton editTogglebutton;
 		private global::Gtk.Button saveButton;
 		
 		protected virtual void Build ()
@@ -82,8 +81,8 @@ namespace WidgetLibrary
 			this.dayCombobox.AppendText (global::Mono.Unix.Catalog.GetString ("Freitag"));
 			this.dayCombobox.AppendText (global::Mono.Unix.Catalog.GetString ("Samstag"));
 			this.dayCombobox.AppendText (global::Mono.Unix.Catalog.GetString ("Sonntag"));
-			this.dayCombobox.AppendText ("");
 			this.dayCombobox.Name = "dayCombobox";
+			this.dayCombobox.Active = 0;
 			this.table1.Add (this.dayCombobox);
 			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table1 [this.dayCombobox]));
 			w4.TopAttach = ((uint)(1));
@@ -151,15 +150,15 @@ namespace WidgetLibrary
 			this.hbox2.Name = "hbox2";
 			this.hbox2.Spacing = 6;
 			// Container child hbox2.Gtk.Box+BoxChild
-			this.entry10 = new global::Gtk.Entry ();
-			this.entry10.CanFocus = true;
-			this.entry10.Name = "entry10";
-			this.entry10.IsEditable = true;
-			this.entry10.WidthChars = 2;
-			this.entry10.MaxLength = 2;
-			this.entry10.InvisibleChar = '●';
-			this.hbox2.Add (this.entry10);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.entry10]));
+			this.stopHourEntry = new global::Gtk.Entry ();
+			this.stopHourEntry.CanFocus = true;
+			this.stopHourEntry.Name = "stopHourEntry";
+			this.stopHourEntry.IsEditable = true;
+			this.stopHourEntry.WidthChars = 2;
+			this.stopHourEntry.MaxLength = 2;
+			this.stopHourEntry.InvisibleChar = '●';
+			this.hbox2.Add (this.stopHourEntry);
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.stopHourEntry]));
 			w10.Position = 0;
 			// Container child hbox2.Gtk.Box+BoxChild
 			this.label12 = new global::Gtk.Label ();
@@ -171,15 +170,15 @@ namespace WidgetLibrary
 			w11.Expand = false;
 			w11.Fill = false;
 			// Container child hbox2.Gtk.Box+BoxChild
-			this.entry11 = new global::Gtk.Entry ();
-			this.entry11.CanFocus = true;
-			this.entry11.Name = "entry11";
-			this.entry11.IsEditable = true;
-			this.entry11.WidthChars = 2;
-			this.entry11.MaxLength = 2;
-			this.entry11.InvisibleChar = '●';
-			this.hbox2.Add (this.entry11);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.entry11]));
+			this.StopMinuteEntry = new global::Gtk.Entry ();
+			this.StopMinuteEntry.CanFocus = true;
+			this.StopMinuteEntry.Name = "StopMinuteEntry";
+			this.StopMinuteEntry.IsEditable = true;
+			this.StopMinuteEntry.WidthChars = 2;
+			this.StopMinuteEntry.MaxLength = 2;
+			this.StopMinuteEntry.InvisibleChar = '●';
+			this.hbox2.Add (this.StopMinuteEntry);
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.StopMinuteEntry]));
 			w12.Position = 2;
 			this.table1.Add (this.hbox2);
 			global::Gtk.Table.TableChild w13 = ((global::Gtk.Table.TableChild)(this.table1 [this.hbox2]));
@@ -293,59 +292,33 @@ namespace WidgetLibrary
 			w29.RightAttach = ((uint)(3));
 			w29.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table3.Gtk.Table+TableChild
-			this.editTogglebutton = new global::Gtk.ToggleButton ();
-			this.editTogglebutton.CanFocus = true;
-			this.editTogglebutton.Name = "editTogglebutton";
-			this.editTogglebutton.UseUnderline = true;
-			// Container child editTogglebutton.Gtk.Container+ContainerChild
+			this.saveButton = new global::Gtk.Button ();
+			this.saveButton.CanFocus = true;
+			this.saveButton.Name = "saveButton";
+			this.saveButton.UseUnderline = true;
+			// Container child saveButton.Gtk.Container+ContainerChild
 			global::Gtk.Alignment w30 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
 			// Container child GtkAlignment.Gtk.Container+ContainerChild
 			global::Gtk.HBox w31 = new global::Gtk.HBox ();
 			w31.Spacing = 2;
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Image w32 = new global::Gtk.Image ();
-			w32.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-edit", global::Gtk.IconSize.Menu);
+			w32.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-floppy", global::Gtk.IconSize.Menu);
 			w31.Add (w32);
 			// Container child GtkHBox.Gtk.Container+ContainerChild
 			global::Gtk.Label w34 = new global::Gtk.Label ();
-			w34.LabelProp = global::Mono.Unix.Catalog.GetString ("Bearbeiten");
+			w34.LabelProp = global::Mono.Unix.Catalog.GetString ("Speichern");
 			w34.UseUnderline = true;
 			w31.Add (w34);
 			w30.Add (w31);
-			this.editTogglebutton.Add (w30);
-			this.table3.Add (this.editTogglebutton);
-			global::Gtk.Table.TableChild w38 = ((global::Gtk.Table.TableChild)(this.table3 [this.editTogglebutton]));
-			w38.LeftAttach = ((uint)(1));
-			w38.RightAttach = ((uint)(2));
-			w38.YOptions = ((global::Gtk.AttachOptions)(4));
-			// Container child table3.Gtk.Table+TableChild
-			this.saveButton = new global::Gtk.Button ();
-			this.saveButton.CanFocus = true;
-			this.saveButton.Name = "saveButton";
-			this.saveButton.UseUnderline = true;
-			// Container child saveButton.Gtk.Container+ContainerChild
-			global::Gtk.Alignment w39 = new global::Gtk.Alignment (0.5F, 0.5F, 0F, 0F);
-			// Container child GtkAlignment.Gtk.Container+ContainerChild
-			global::Gtk.HBox w40 = new global::Gtk.HBox ();
-			w40.Spacing = 2;
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Image w41 = new global::Gtk.Image ();
-			w41.Pixbuf = global::Stetic.IconLoader.LoadIcon (this, "gtk-floppy", global::Gtk.IconSize.Menu);
-			w40.Add (w41);
-			// Container child GtkHBox.Gtk.Container+ContainerChild
-			global::Gtk.Label w43 = new global::Gtk.Label ();
-			w43.LabelProp = global::Mono.Unix.Catalog.GetString ("Speichern");
-			w43.UseUnderline = true;
-			w40.Add (w43);
-			w39.Add (w40);
-			this.saveButton.Add (w39);
+			this.saveButton.Add (w30);
 			this.table3.Add (this.saveButton);
-			global::Gtk.Table.TableChild w47 = ((global::Gtk.Table.TableChild)(this.table3 [this.saveButton]));
-			w47.YOptions = ((global::Gtk.AttachOptions)(4));
+			global::Gtk.Table.TableChild w38 = ((global::Gtk.Table.TableChild)(this.table3 [this.saveButton]));
+			w38.YOptions = ((global::Gtk.AttachOptions)(4));
 			this.vbox1.Add (this.table3);
-			global::Gtk.Box.BoxChild w48 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.table3]));
-			w48.Position = 3;
-			w48.Expand = false;
+			global::Gtk.Box.BoxChild w39 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.table3]));
+			w39.Position = 3;
+			w39.Expand = false;
 			this.Add (this.vbox1);
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
@@ -353,7 +326,6 @@ namespace WidgetLibrary
 			this.Show ();
 			this.dayCombobox.Changed += new global::System.EventHandler (this.OnDayComboboxChanged);
 			this.saveButton.Clicked += new global::System.EventHandler (this.OnSaveButtonClicked);
-			this.editTogglebutton.Clicked += new global::System.EventHandler (this.OnEditTogglebuttonClicked);
 			this.backButton.Clicked += new global::System.EventHandler (this.OnBackButtonClicked);
 		}
 	}

@@ -62,7 +62,6 @@ public partial class MainWindow
 		this.ExtensionEvents = ((global::Gdk.ExtensionMode)(1));
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("Home");
-		this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 		// Container child MainWindow.Gtk.Container+ContainerChild
 		this.vbox1 = new global::Gtk.VBox ();
 		this.vbox1.Name = "vbox1";
@@ -170,8 +169,8 @@ public partial class MainWindow
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
-		this.DefaultWidth = 653;
-		this.DefaultHeight = 377;
+		this.DefaultWidth = 652;
+		this.DefaultHeight = 378;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		this.addWorker.Activated += new global::System.EventHandler (this.OnAddWorkerActivated);

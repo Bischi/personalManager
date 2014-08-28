@@ -25,7 +25,7 @@ namespace WidgetLibrary
 				sqlite_conn.Open ();
 			} catch (Exception e) {
 				return false;
-				//TODO Log errors
+				//TODO Log errorsreadWorkerID
 			}
 			return true;
 		}
@@ -94,6 +94,7 @@ namespace WidgetLibrary
 			}
 		}
 
+		#region Areas
 		public override List<string> readAreas ()
 		{
 			try {
@@ -181,6 +182,8 @@ namespace WidgetLibrary
 				return 0; 
 			}
 		}
+
+		#endregion
 
 		public override List<string> readTasks (int areaID)
 		{
@@ -434,6 +437,125 @@ namespace WidgetLibrary
 				return false;
 			}
 		}
+
+
+		#region Timedetail
+
+
+		public override List<String[]> readTimeDetails () //fuer das Anzeigen der Daten bei der Bearbeitung der Schichten
+		{
+			try {
+				
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				if(sqlite_conn.State == ConnectionState.Closed)
+					sqlite_conn.Open();
+				sqlite_cmd.CommandText = "SELECT name, date, starttime, endtime FROM tbl_timedetail";
+				
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				string readname = ""; 
+				List<string[]> timeList = new List<string[]>(); // To Save Times and return them
+
+				while (datareader.Read())
+				{
+					string[] vals = new string[4];
+					for(int j = 0; j<4; j++)
+					{
+						vals[j] = datareader.GetString(j);
+					}
+					timeList.Add(vals);
+				}
+				sqlite_conn.Close ();
+				return timeList;
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return null; 
+			}
+		}
+
+		public override bool addTime (string name, string date, string starttime, string stoptime)
+		{
+			try 
+			{
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "INSERT INTO tbl_timedetail (name, date, starttime, endtime) VALUES ('"+name+"', '"+date+"','"+starttime+"','"+stoptime+"')";
+				sqlite_conn.Open(); 
+				sqlite_cmd.ExecuteNonQuery();
+				sqlite_conn.Close();
+			} 
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();				
+				return false;
+			}
+			return true;
+		}
+
+
+		public override bool updateTime (int id, string name, string date, string starttime, string stoptime)
+		{
+			try 
+			{
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "UPDATE tbl_timedetail name ='"+name+"', date='"+date+"', starttime='"+starttime+"', endtime='"+stoptime+"' WHERE('"+name+"', '"+date+"','"+starttime+"','"+stoptime+"')";
+				sqlite_conn.Open(); 
+				sqlite_cmd.ExecuteNonQuery();
+				sqlite_conn.Close();
+			} 
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();				
+				return false;
+			}
+			return true;
+		}
+
+		public override int checkOutTimedetailID (string name, string starttime)
+		{
+			try {
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "SELECT id FROM tbl_timedetail WHERE name ='"+name+"' AND starttime='"+starttime+"'";
+				sqlite_conn.Open ();
+				datareader = sqlite_cmd.ExecuteReader ();
+				
+				int readID = 0;
+				
+				while (datareader.Read())
+				{
+					readID = datareader.GetInt16(0);
+				}
+				sqlite_conn.Close ();
+				return readID; 
+			}  
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();
+				return 0; 
+			}
+		}
+
+
+		public override bool deleteTime (string name, string date, string starttime, string stoptime)
+		{
+			try 
+			{
+				sqlite_cmd = sqlite_conn.CreateCommand ();
+				sqlite_cmd.CommandText = "DELETE FROM tbl_timedetail WHERE name ='"+name+"' AND date='"+date+"' AND starttime='"+starttime+"' AND endtime='"+stoptime+"'";
+				sqlite_conn.Open(); 
+				sqlite_cmd.ExecuteNonQuery();
+				sqlite_conn.Close();
+			} 
+			catch (Exception ex) 
+			{
+				sqlite_conn.Close ();				
+				return false;
+			}
+			return true;
+		}
+
+		#endregion
 
 //		public override List<string[]> readWorker ()
 //		{

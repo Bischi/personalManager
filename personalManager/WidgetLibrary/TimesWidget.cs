@@ -11,7 +11,11 @@ namespace WidgetLibrary
 
 		Gtk.ListStore stempsListStore = new Gtk.ListStore (typeof (string), typeof (string), typeof (string), typeof (string), typeof (string));
 
-
+		string name; 
+		string date;
+		string starttime; 
+		string stoptime;
+		
 		public TimesWidget ()
 		{
 			this.Build ();
@@ -21,8 +25,15 @@ namespace WidgetLibrary
 			Gdk.Color bluecolor = new Gdk.Color (255, 100, 50);
 			//dateLabel.ModifyFg (Gtk.StateType.Normal, bluecolor);
 			headerLabel.ModifyFont (Pango.FontDescription.FromString ("Calibri, Bold 15"));
+			timesManagementHeaderLabel.ModifyFont (Pango.FontDescription.FromString ("Calibri, Bold 11"));
+			outputHeaderLabel.ModifyFont (Pango.FontDescription.FromString ("Calibri, Bold 11"));
 			#endregion
+			fillTreeView();
 
+		}
+
+		private void fillTreeView ()
+		{
 			#region TreeView füllen
 			// Create a column for the date name
 			Gtk.TreeViewColumn nameColumn = new Gtk.TreeViewColumn ();
@@ -31,12 +42,6 @@ namespace WidgetLibrary
 			// Create the text cell that will display the date
 			Gtk.CellRendererText nameTitleCell = new Gtk.CellRendererText ();
 			nameColumn.PackStart (nameTitleCell, true); // Add the cell to the column
-			
-			// Create a column for the description 
-			Gtk.TreeViewColumn dayColumn = new Gtk.TreeViewColumn ();
-			dayColumn.Title = "Tag";
-			Gtk.CellRendererText dayTitleCell = new Gtk.CellRendererText ();
-			dayColumn.PackStart (dayTitleCell, true);
 			
 			// Create a column for the description 
 			Gtk.TreeViewColumn dateColumn = new Gtk.TreeViewColumn ();
@@ -58,38 +63,29 @@ namespace WidgetLibrary
 			
 			// Add the columns to the TreeView
 			timesTreeview.AppendColumn (nameColumn);
-			timesTreeview.AppendColumn (dayColumn);
 			timesTreeview.AppendColumn (dateColumn);
 			timesTreeview.AppendColumn (starttimeColumn);
 			timesTreeview.AppendColumn (endtimeColumn);
 			
 			// Tell the Cell Renderers which items in the model to display
 			nameColumn.AddAttribute (nameTitleCell, "text", 0);
-			dayColumn.AddAttribute (dayTitleCell, "text", 1);
-			dateColumn.AddAttribute(dateTitleCell, "text", 2);
-			starttimeColumn.AddAttribute(starttimeTitleCell, "text", 3);
-			endtimeColumn.AddAttribute(endtimeTitleCell, "text", 4);
+			dateColumn.AddAttribute(dateTitleCell, "text", 1);
+			starttimeColumn.AddAttribute(starttimeTitleCell, "text", 2);
+			endtimeColumn.AddAttribute(endtimeTitleCell, "text", 3);
 			
-	
-			stempsListStore.AppendValues ("Vormittag Schicht", "Samstag", "21.07.2014", "08:10", "12:50");
+			List<String[]> timeDetails = SelectWidget.connection.readTimeDetails(); // PARAMETER neu einfügen!
 			
+			foreach (string[] s in timeDetails) {
+				stempsListStore.AppendValues (s[0], s[1], s[2], s[3]);
+			}
 			
-			//			List<String[]> stempsDetail = MainClass.connection.readStemps(1); // PARAMETER neu einfügen!
-			//			
-			//			foreach (string[] s in stempsDetail) {
-			//				stempsListStore.AppendValues (s[0], s[1], s[2], s[3], s[4]);
-			//			}
-			//			
-			//			
-			//			
-			//			// Assign the model to the TreeView
+			// Assign the model to the TreeView
 			
 			timesTreeview.Model = stempsListStore;
 			
-			#endregion
+#endregion
 
 		}
-
 
 		protected void OnExportButtonClicked (object sender, EventArgs e)
 		{
@@ -106,15 +102,53 @@ namespace WidgetLibrary
 
 		}
 
-		protected void OnEditButtonClicked (object sender, EventArgs e)
-		{
-
-		}
-
 		protected void OnNewButtonClicked (object sender, EventArgs e)
 		{
 			SelectWidget w = (SelectWidget) this.Parent;
 			w.ViewNewTimesWidget();
+		}
+
+		protected void OnDeleteButtonClicked (object sender, EventArgs e)
+		{
+			MessageDialog warningMD = new MessageDialog (null, DialogFlags.DestroyWithParent, MessageType.Warning, ButtonsType.YesNo, "Schicht wirklich entfernen?");
+			if ((ResponseType)warningMD.Run () == ResponseType.Yes) {
+
+				bool delOK = SelectWidget.connection.deleteTime (name, date, starttime, stoptime);
+				if (delOK == true) {
+					MessageDialog md = new MessageDialog (null, DialogFlags.DestroyWithParent, MessageType.Info, ButtonsType.Ok, "Schicht wurde entfernt!");
+					md.Run ();
+					md.Destroy ();
+					warningMD.Destroy ();
+				} else {
+					MessageDialog md = new MessageDialog (null, DialogFlags.DestroyWithParent, MessageType.Error, ButtonsType.Ok, "Schicht konnte nicht entfernt werden!");
+					md.Run ();
+					md.Destroy ();
+					warningMD.Destroy ();
+				}
+			} else {
+				warningMD.Destroy ();
+			}
+		}
+
+
+		protected void OnRefreshButtonClicked (object sender, EventArgs e)
+		{			
+			fillTreeView();
+		}
+
+		protected void OnTimesTreeviewCursorChanged (object sender, EventArgs e)
+		{
+			TreeSelection selection = (sender as TreeView).Selection;
+			TreeModel model;
+			TreeIter iter;
+			
+			// THE ITER WILL POINT TO THE SELECTED ROW
+			if(selection.GetSelected(out model, out iter)){
+				name = (model.GetValue (iter, 0).ToString());
+				date = (model.GetValue (iter, 1).ToString());
+				starttime = (model.GetValue (iter, 2).ToString());
+				stoptime = (model.GetValue (iter, 3).ToString());
+			}
 		}
 	}
 }
