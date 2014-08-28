@@ -1,7 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="WidgetLibrary/SQLiteConnection.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WidgetLibrary/PersonWidget.cs">
     <Files>
+<<<<<<< HEAD
       <File FileName="WidgetLibrary/SQLiteConnection.cs" Line="4" Column="23" />
       <File FileName="WidgetLibrary/NewTimesWidget.cs" Line="111" Column="20" />
       <File FileName="WidgetLibrary/DBConnector.cs" Line="53" Column="3" />
@@ -10,13 +11,24 @@
       <File FileName="WidgetLibrary/PersonWidget.cs" Line="139" Column="28" />
       <File FileName="personalManager/MainWindow.cs" Line="52" Column="1" />
       <File FileName="WidgetLibrary/PlansWidget.cs" Line="1" Column="1" />
+=======
+      <File FileName="personalManager/Main.cs" Line="15" Column="3" />
+      <File FileName="personalManager/MainWindow.cs" Line="21" Column="21" />
+      <File FileName="WidgetLibrary/SQLiteConnection.cs" Line="44" Column="51" />
+      <File FileName="WidgetLibrary/DBConnector.cs" Line="28" Column="44" />
+      <File FileName="WidgetLibrary/TimesWidget.cs" Line="91" Column="1" />
+      <File FileName="WidgetLibrary/WorkerWidget.cs" Line="86" Column="23" />
+      <File FileName="WidgetLibrary/PersonWidget.cs" Line="126" Column="18" />
+      <File FileName="WidgetLibrary/SelectWidget.cs" Line="24" Column="1" />
+      <File FileName="WidgetLibrary/gtk-gui/WidgetLibrary.SelectWidget.cs" Line="94" Column="1" />
+>>>>>>> 39174bbcb35d9c3d1d537d665dd381eb8e9183e2
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="personalManager" expanded="True" />
           <Node name="WidgetLibrary" expanded="True">
-            <Node name="SQLiteConnection.cs" selected="True" />
+            <Node name="PersonWidget.cs" selected="True" />
           </Node>
         </State>
       </Pad>

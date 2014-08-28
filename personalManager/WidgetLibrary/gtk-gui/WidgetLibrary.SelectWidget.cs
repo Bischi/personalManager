@@ -48,6 +48,8 @@ namespace WidgetLibrary
 			w1.Position = 0;
 			// Container child vbox6.Gtk.Box+BoxChild
 			this.label9 = new global::Gtk.Label ();
+
+			this.label9 = new global::Gtk.Label();
 			this.label9.Name = "label9";
 			this.label9.LabelProp = global::Mono.Unix.Catalog.GetString ("Pläne");
 			this.vbox6.Add (this.label9);
@@ -77,6 +79,7 @@ namespace WidgetLibrary
 			w5.Position = 0;
 			// Container child vbox5.Gtk.Box+BoxChild
 			this.personsButtonLabel = new global::Gtk.Label ();
+			this.personsButtonLabel = new global::Gtk.Label();
 			this.personsButtonLabel.Name = "personsButtonLabel";
 			this.personsButtonLabel.LabelProp = global::Mono.Unix.Catalog.GetString ("Personen");
 			this.vbox5.Add (this.personsButtonLabel);
